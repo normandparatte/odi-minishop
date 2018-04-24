@@ -1,4 +1,4 @@
-package minishop.restresources;
+package ch.hearc.ig.odi.minishop.restresources;
 
 import java.util.HashSet;
 import java.util.Set;

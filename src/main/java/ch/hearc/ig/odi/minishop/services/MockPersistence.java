@@ -1,7 +1,7 @@
-package minishop.services;
+package ch.hearc.ig.odi.minishop.services;
 
 
-import minishop.business.Customer;
+import ch.hearc.ig.odi.minishop.business.Customer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,15 +18,11 @@ public class MockPersistence {
   @PostConstruct
   public void init() {
     customers = new HashMap<>();
-    generateMockData();
   }
 
-  public ArrayList<Customer> getAllPersons() {
-    ArrayList<Customer> customer = new ArrayList<>(customers.values());
-    return customer;
+  public ArrayList<Customer> getAllCustomers() {
+    ArrayList<Customer> customers = new ArrayList<>(this.customers.values());
+    return customers;
   }
 
-  private void generateMockData() {
-     //add data
-  }
 }

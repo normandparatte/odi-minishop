@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "402ac353-8913-4916-9089-fad182d16b44",
+		"name": "Minishop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"description": null,
+			"item": []
+		},
+		{
+			"name": "post JSON",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bar\": \"foo\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/minishop/api/customer/json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"minishop",
+						"api",
+						"customer",
+						"json"
+					]
+				},
+				"description": "get JSON object"
+			},
+			"response": []
+		},
+		{
+			"name": "list customers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"chakc\":\"bar\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/minishop/api/customer/json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"minishop",
+						"api",
+						"customer",
+						"json"
+					]
+				},
+				"description": "get JSON object"
+			},
+			"response": []
+		},
+		{
+			"name": "get JSON",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"chakc\":\"bar\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/minishop/api/customer/json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"minishop",
+						"api",
+						"customer",
+						"json"
+					]
+				},
+				"description": "get JSON object"
+			},
+			"response": []
+		}
+	]
+}

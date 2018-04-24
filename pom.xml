@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ch.hearc.ig.odi</groupId>
-    <artifactId>restjaxrstminishop</artifactId>
+    <artifactId>minishop</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>restjaxrstp1</name>
 
     <build>
-        <finalName>restjaxrstminishop</finalName>
+        <finalName>minishop</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
