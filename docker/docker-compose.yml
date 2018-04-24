@@ -1,0 +1,11 @@
+version: '2'
+services:
+    restjaxrstp1:
+        image: oracle/glassfish:5.0
+        ports:
+            - 9090:8080
+            - 9848:4848
+        volumes:
+            - ../target:/glassfish5/glassfish/domains/domain1/autodeploy
+
+        
