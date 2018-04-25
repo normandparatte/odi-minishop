@@ -1,16 +1,20 @@
 package ch.hearc.ig.odi.minishop.restresources;
 
-import ch.hearc.ig.odi.minishop.services.MockPersistence;
 import ch.hearc.ig.odi.minishop.business.Customer;
-
+import ch.hearc.ig.odi.minishop.services.MockPersistence;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -46,5 +50,48 @@ public class CustomerResource {
     return persistenceService.getAllCustomers();
   }
 
+  @GET
+  @Path("/{customerid}")
+  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  public Customer getCustomer(@PathParam("customerid") Long customerid) {
+    return persistenceService.getCustomer(customerid);
+  }
 
+  @POST
+  @Path("/")
+  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  public Customer createCustomer(
+      @FormParam("id") long id,
+      @FormParam("firstName") String firstName,
+      @FormParam("lastName") String lastName,
+      @FormParam("username") String username,
+      @FormParam("email") String email,
+      @FormParam("phone") String phone) {
+    Customer customer = persistenceService
+        .createCustomer(id, firstName, lastName, username, email, phone);
+    return customer;
+  }
+
+  @PUT
+  @Path("/{customerid}")
+  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  public Customer updatePeople(
+      @FormParam("id") long id,
+      @FormParam("firstName") String firstName,
+      @FormParam("lastName") String lastName,
+      @FormParam("username") String username,
+      @FormParam("email") String email,
+      @FormParam("phone") String phone) {
+    Customer customer = persistenceService
+        .updateCustomer(id, firstName, lastName, username, email, phone);
+    return customer;
+  }
+
+  @DELETE
+  @Path("/{customerid}")
+  public void deleteCustomer(@PathParam("customerid") Long personid) {
+    persistenceService.deleteCustomer(personid);
+  }
 }
