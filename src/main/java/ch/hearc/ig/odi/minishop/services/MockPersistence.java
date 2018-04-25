@@ -94,4 +94,12 @@ public class MockPersistence {
     ArrayList<Customer> products = new ArrayList(this.products.values());
     return products;
   }
+
+  public Product createProduct(long productid, double price, String productname, String description,
+      String category, String status) {
+    Long id = idCounter++;
+    Product product = new Product(productid, price, productname, description, category, status);
+    products.put(product.getProductid(), product);
+    return product;
+  }
 }
