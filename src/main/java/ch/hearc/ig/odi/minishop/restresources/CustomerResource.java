@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -47,11 +49,26 @@ public class CustomerResource {
   }
 
   @GET
-  @Path("/{personid}")
+  @Path("/{customerid}")
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-  public Customer getPerson(@PathParam("personid") Long personid) {
-    return persistenceService.getCustomer(personid);
+  public Customer getCustomer(@PathParam("customerid") Long customerid) {
+    return persistenceService.getCustomer(customerid);
   }
 
+  @POST
+  @Path("/")
+  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  public Customer createCustomer(
+      @FormParam("id") long id,
+      @FormParam("firstName") String firstName,
+      @FormParam("lastName") String lastName,
+      @FormParam("username") String username,
+      @FormParam("email") String email,
+      @FormParam("phone") String phone) {
+    Customer customer = persistenceService
+        .createCustomer(id, firstName, lastName, username, email, phone);
+    return customer;
+  }
 
 }

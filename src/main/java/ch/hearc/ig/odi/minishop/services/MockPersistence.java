@@ -29,6 +29,16 @@ public class MockPersistence {
     return customers.get(id);
   }
 
+  public Customer createCustomer(long customerid, String firstname, String lastname,
+      String username,
+      String email, String phone) {
+    Long id = idCounter++;
+    Customer customer = new Customer(customerid, firstname, lastname, username,
+        email, phone);
+    customers.put(customer.getCustomerid(), customer);
+    return customer;
+  }
+
   private void generateMockData() {
     Customer c1 = new Customer(101, "Normand", "Paratte", "nopa", "nopa@mail.com", "078 888 88 88");
     Customer c2 = new Customer(102, "Francis", "Heche", "frhe", "frhe@mail.com", "079 999 99 99");
