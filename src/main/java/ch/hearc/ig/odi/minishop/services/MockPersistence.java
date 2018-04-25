@@ -58,7 +58,7 @@ public class MockPersistence {
     return customers;
   }
 
-  public Customer getCustomer(Long id) {
+  public Customer getCustomer(long id) {
     return customers.get(id);
   }
 
@@ -72,7 +72,7 @@ public class MockPersistence {
     return customer;
   }
 
-  public Customer updateCustomer(Long id, String firstName, String lastName, String username,
+  public Customer updateCustomer(long id, String firstName, String lastName, String username,
       String email, String phone) {
     Customer customer = customers.get(id);
     customer.setFirstname(firstName);
@@ -83,7 +83,7 @@ public class MockPersistence {
     return customer;
   }
 
-  public void deleteCustomer(Long id) {
+  public void deleteCustomer(long id) {
     customers.remove(id);
   }
 
@@ -95,7 +95,7 @@ public class MockPersistence {
     return products;
   }
 
-  public Product getProduct(Long id) {
+  public Product getProduct(long id) {
     return products.get(id);
   }
 
@@ -104,6 +104,18 @@ public class MockPersistence {
     Long id = idCounter++;
     Product product = new Product(productid, price, productname, description, category, status);
     products.put(product.getProductid(), product);
+    return product;
+  }
+
+  public Product updateProduct(long productid, double price, String productname, String description,
+      String category, String status) {
+    Product product = products.get(productid);
+    product.setProductid(productid);
+    product.setPrice(price);
+    product.setProductname(productname);
+    product.setDescription(description);
+    product.setCategory(category);
+    product.setStatus(status);
     return product;
   }
 
