@@ -12,6 +12,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -72,10 +73,25 @@ public class CustomerResource {
     return customer;
   }
 
+  @PUT
+  @Path("/{customerid}")
+  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  public Customer updatePeople(
+      @FormParam("id") long id,
+      @FormParam("firstName") String firstName,
+      @FormParam("lastName") String lastName,
+      @FormParam("username") String username,
+      @FormParam("email") String email,
+      @FormParam("phone") String phone) {
+    Customer customer = persistenceService
+        .updateCustomer(id, firstName, lastName, username, email, phone);
+    return customer;
+  }
+
   @DELETE
   @Path("/{customerid}")
   public void deleteCustomer(@PathParam("customerid") Long personid) {
     persistenceService.deleteCustomer(personid);
   }
-
 }

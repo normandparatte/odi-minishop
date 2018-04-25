@@ -39,7 +39,18 @@ public class MockPersistence {
     return customer;
   }
 
-  public void deletePerson(Long id) {
+  public Customer updateCustomer(Long id, String firstName, String lastName, String username,
+      String email, String phone) {
+    Customer customer = customers.get(id);
+    customer.setFirstname(firstName);
+    customer.setFirstname(lastName);
+    customer.setFirstname(username);
+    customer.setFirstname(email);
+    customer.setFirstname(phone);
+    return customer;
+  }
+
+  public void deleteCustomer(Long id) {
     customers.remove(id);
   }
 
