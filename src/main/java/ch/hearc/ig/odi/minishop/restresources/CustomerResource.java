@@ -52,4 +52,6 @@ public class CustomerResource {
   public Customer getPerson(@PathParam("personid") Long personid) {
     return persistenceService.getCustomer(personid);
   }
+
+
 }
