@@ -106,4 +106,8 @@ public class MockPersistence {
     products.put(product.getProductid(), product);
     return product;
   }
+
+  public void deleteProduct(Long id) {
+    products.remove(id);
+  }
 }

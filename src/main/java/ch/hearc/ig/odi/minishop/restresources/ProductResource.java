@@ -7,6 +7,7 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -50,5 +51,11 @@ public class ProductResource {
     Product product = persistenceService
         .createProduct(productid, price, productname, description, category, status);
     return product;
+  }
+
+  @DELETE
+  @Path("/{productid}")
+  public void deleteProduct(@PathParam("productid") Long productid) {
+    persistenceService.deleteProduct(productid);
   }
 }
