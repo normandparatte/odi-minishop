@@ -1,8 +1,7 @@
 package ch.hearc.ig.odi.minishop.restresources;
 
-import ch.hearc.ig.odi.minishop.services.MockPersistence;
 import ch.hearc.ig.odi.minishop.business.Customer;
-
+import ch.hearc.ig.odi.minishop.services.MockPersistence;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +44,4 @@ public class CustomerResource {
   public List<Customer> getPeople() {
     return persistenceService.getAllCustomers();
   }
-
-
 }
