@@ -39,6 +39,10 @@ public class MockPersistence {
     return customer;
   }
 
+  public void deletePerson(Long id) {
+    customers.remove(id);
+  }
+
   private void generateMockData() {
     Customer c1 = new Customer(101, "Normand", "Paratte", "nopa", "nopa@mail.com", "078 888 88 88");
     Customer c2 = new Customer(102, "Francis", "Heche", "frhe", "frhe@mail.com", "079 999 99 99");

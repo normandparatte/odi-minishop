@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -69,6 +70,12 @@ public class CustomerResource {
     Customer customer = persistenceService
         .createCustomer(id, firstName, lastName, username, email, phone);
     return customer;
+  }
+
+  @DELETE
+  @Path("/{customerid}")
+  public void deleteCustomer(@PathParam("customerid") Long personid) {
+    persistenceService.deleteCustomer(personid);
   }
 
 }
