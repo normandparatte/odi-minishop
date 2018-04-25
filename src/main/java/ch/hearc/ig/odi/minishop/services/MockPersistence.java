@@ -95,6 +95,10 @@ public class MockPersistence {
     return products;
   }
 
+  public Product getProduct(Long id) {
+    return products.get(id);
+  }
+
   public Product createProduct(long productid, double price, String productname, String description,
       String category, String status) {
     Long id = idCounter++;

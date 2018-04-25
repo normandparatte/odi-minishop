@@ -11,6 +11,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -28,6 +29,13 @@ public class ProductResource {
     return persistenceService.getAllProducts();
   }
 
+  @GET
+  @Path("/{productid}")
+  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  public Product getProduct(@PathParam("productid") Long productid) {
+    return persistenceService.getProduct(productid);
+  }
+
   @POST
   @Path("/")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -43,5 +51,4 @@ public class ProductResource {
         .createProduct(productid, price, productname, description, category, status);
     return product;
   }
-
 }
