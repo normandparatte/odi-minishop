@@ -9,15 +9,15 @@ public class Order {
   // -----------------------------------------------------------------------------------------------
   // ----- PROPRIETES ------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  private Long orderid;
+  private long orderid;
   private Date orderdate;
   private String orderstatus;
-  private List<OrderLine> content = new ArrayList<>();
+  private List<OrderLine> content;
 
   // -----------------------------------------------------------------------------------------------
   // ----- CONSTRUCTEURS ---------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  public Order(Long orderid, Date orderdate, String orderstatus,
+  public Order(long orderid, Date orderdate, String orderstatus,
       List<OrderLine> content) {
     this.orderid = orderid;
     this.orderdate = orderdate;
@@ -28,11 +28,11 @@ public class Order {
   // -----------------------------------------------------------------------------------------------
   // ----- GETTERS & SETTERS -----------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  public Long getOrderid() {
+  public long getOrderid() {
     return orderid;
   }
 
-  public void setOrderid(Long orderid) {
+  public void setOrderid(long orderid) {
     this.orderid = orderid;
   }
 

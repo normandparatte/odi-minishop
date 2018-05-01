@@ -2,9 +2,13 @@ package ch.hearc.ig.odi.minishop.services;
 
 
 import ch.hearc.ig.odi.minishop.business.Customer;
+import ch.hearc.ig.odi.minishop.business.Order;
+import ch.hearc.ig.odi.minishop.business.OrderLine;
 import ch.hearc.ig.odi.minishop.business.Product;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
@@ -17,12 +21,14 @@ public class MockPersistence {
   // -----------------------------------------------------------------------------------------------
   private Map<Long, Customer> customers;
   private Map<Long, Product> products;
+  private Map<Long, Order> orders;
   private long idCounter = 3000;
 
   @PostConstruct
   public void init() {
     customers = new HashMap<>();
     products = new HashMap<>();
+    orders = new HashMap<>();
     generateMockData();
   }
 
@@ -48,6 +54,40 @@ public class MockPersistence {
     products.put(p2.getProductid(), p2);
     products.put(p3.getProductid(), p3);
     products.put(p4.getProductid(), p4);
+
+    OrderLine ol1 = new OrderLine(101, p1,2);
+    OrderLine ol2 = new OrderLine(102, p3, 12);
+    OrderLine ol3 = new OrderLine(103, p2, 1);
+    OrderLine ol4 = new OrderLine(104, p4, 6);
+    OrderLine ol5 = new OrderLine(105, p1, 9);
+    OrderLine ol6 = new OrderLine(106, p3, 3);
+    OrderLine ol7 = new OrderLine(107, p3, 6);
+    OrderLine ol8 = new OrderLine(108, p1, 11);
+
+    List<OrderLine> orderLines1 = new ArrayList<>();
+
+    orderLines1.add(ol1);
+    orderLines1.add(ol2);
+
+    Order o1 = new Order(101, new Date(2017/24/02), "paid", orderLines1);
+
+    List<OrderLine> orderLines2 = new ArrayList<>();
+    orderLines2.add(ol3);
+    orderLines2.add(ol4);
+
+    Order o2 = new Order(102, new Date(2018/01/21), "open", orderLines2);
+
+    List<OrderLine> orderLines3 = new ArrayList<>();
+    orderLines3.add(ol5);
+    orderLines3.add(ol6);
+    orderLines3.add(ol7);
+    orderLines3.add(ol8);
+
+    Order o3 = new Order(103, new Date(2018/01/27), "open", orderLines3);
+
+    orders.put(o1.getOrderid(),o1);
+    orders.put(o2.getOrderid(),o2);
+    orders.put(o3.getOrderid(),o3);
   }
 
   // -----------------------------------------------------------------------------------------------
@@ -121,5 +161,17 @@ public class MockPersistence {
 
   public void deleteProduct(Long id) {
     products.remove(id);
+  }
+
+  // -----------------------------------------------------------------------------------------------
+  // ----- COMMANDES -------------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------
+  public ArrayList<Order> getAllOrders() {
+    ArrayList<Order> orders = new ArrayList(this.orders.values());
+    return orders;
+  }
+
+  public Order getOrder(long id) {
+    return orders.get(id);
   }
 }

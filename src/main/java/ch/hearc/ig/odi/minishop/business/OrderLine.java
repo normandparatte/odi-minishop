@@ -5,14 +5,14 @@ public class OrderLine {
   // -----------------------------------------------------------------------------------------------
   // ----- PROPRIETES ------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  private Long orderlineposition;
+  private long orderlineposition;
   private Product product;
-  private Long quantity;
+  private long quantity;
 
   // -----------------------------------------------------------------------------------------------
   // ----- CONSTRUCTEURS ---------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  public OrderLine(Long orderlineposition, Product product, Long quantity) {
+  public OrderLine(long orderlineposition, Product product, long quantity) {
     this.orderlineposition = orderlineposition;
     this.product = product;
     this.quantity = quantity;
@@ -21,11 +21,11 @@ public class OrderLine {
   // -----------------------------------------------------------------------------------------------
   // ----- GETTERS & SETTERS -----------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  public Long getOrderlineposition() {
+  public long getOrderlineposition() {
     return orderlineposition;
   }
 
-  public void setOrderlineposition(Long orderlineposition) {
+  public void setOrderlineposition(long orderlineposition) {
     this.orderlineposition = orderlineposition;
   }
 
@@ -37,11 +37,11 @@ public class OrderLine {
     this.product = product;
   }
 
-  public Long getQuantity() {
+  public long getQuantity() {
     return quantity;
   }
 
-  public void setQuantity(Long quantity) {
+  public void setQuantity(long quantity) {
     this.quantity = quantity;
   }
 }
