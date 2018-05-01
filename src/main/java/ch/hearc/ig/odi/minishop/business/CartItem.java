@@ -1,6 +1,7 @@
 package ch.hearc.ig.odi.minishop.business;
 
 public class CartItem {
+
   // -----------------------------------------------------------------------------------------------
   // ----- PROPRIETES ------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
@@ -11,7 +12,6 @@ public class CartItem {
   // -----------------------------------------------------------------------------------------------
   // ----- CONSTRUCTEURS ---------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-
   public CartItem(Long cartitemid, Product product, Long quantity) {
     this.cartitemid = cartitemid;
     this.product = product;
@@ -21,16 +21,27 @@ public class CartItem {
   // -----------------------------------------------------------------------------------------------
   // ----- GETTERS & SETTERS -----------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
+  public Long getCartitemid() {
+    return cartitemid;
+  }
 
-  public Long getCartitemid() {return cartitemid;}
+  public void setCartitemid(Long cartitemid) {
+    this.cartitemid = cartitemid;
+  }
 
-  public void setCartitemid(Long cartitemid) {this.cartitemid = cartitemid;}
+  public Product getProduct() {
+    return product;
+  }
 
-  public Product getProduct() {return product;}
+  public void setProduct(Product product) {
+    this.product = product;
+  }
 
-  public void setProduct(Product product) {this.product = product;}
+  public Long getQuantity() {
+    return quantity;
+  }
 
-  public Long getQuantity() {return quantity;}
-
-  public void setQuantity(Long quantity) {this.quantity = quantity;}
+  public void setQuantity(Long quantity) {
+    this.quantity = quantity;
+  }
 }
