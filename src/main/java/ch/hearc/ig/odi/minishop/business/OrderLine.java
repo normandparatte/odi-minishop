@@ -21,7 +21,7 @@ public class OrderLine {
   // -----------------------------------------------------------------------------------------------
   // ----- GETTERS & SETTERS -----------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  public Long getOrderlineposition() {
+  public long getOrderlineposition() {
     return orderlineposition;
   }
 
@@ -37,7 +37,7 @@ public class OrderLine {
     this.product = product;
   }
 
-  public Long getQuantity() {
+  public long getQuantity() {
     return quantity;
   }
 
