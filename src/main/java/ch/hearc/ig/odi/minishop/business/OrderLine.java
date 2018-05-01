@@ -1,18 +1,18 @@
 package ch.hearc.ig.odi.minishop.business;
 
 public class OrderLine {
+
   // -----------------------------------------------------------------------------------------------
   // ----- PROPRIETES ------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  private Long orderlineposition;
+  private long orderlineposition;
   private Product product;
-  private Long quantity;
+  private long quantity;
 
   // -----------------------------------------------------------------------------------------------
   // ----- CONSTRUCTEURS ---------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-
-  public OrderLine(Long orderlineposition, Product product, Long quantity) {
+  public OrderLine(long orderlineposition, Product product, long quantity) {
     this.orderlineposition = orderlineposition;
     this.product = product;
     this.quantity = quantity;
@@ -21,16 +21,27 @@ public class OrderLine {
   // -----------------------------------------------------------------------------------------------
   // ----- GETTERS & SETTERS -----------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
+  public Long getOrderlineposition() {
+    return orderlineposition;
+  }
 
-  public Long getOrderlineposition() {return orderlineposition;}
+  public void setOrderlineposition(long orderlineposition) {
+    this.orderlineposition = orderlineposition;
+  }
 
-  public void setOrderlineposition(Long orderlineposition) {this.orderlineposition = orderlineposition;}
+  public Product getProduct() {
+    return product;
+  }
 
-  public Product getProduct() {return product;}
+  public void setProduct(Product product) {
+    this.product = product;
+  }
 
-  public void setProduct(Product product) {this.product = product;}
+  public Long getQuantity() {
+    return quantity;
+  }
 
-  public Long getQuantity() {return quantity;}
-
-  public void setQuantity(Long quantity) {this.quantity = quantity;}
+  public void setQuantity(long quantity) {
+    this.quantity = quantity;
+  }
 }

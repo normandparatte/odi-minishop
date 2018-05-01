@@ -16,6 +16,7 @@ public class MiniShopRestConfig extends Application {
     HashSet resources = new HashSet<Class<?>>();
     resources.add(CustomerResource.class);
     resources.add(ProductResource.class);
+    resources.add(OrderRessource.class);
     return resources;
   }
 

@@ -1,18 +1,18 @@
 package ch.hearc.ig.odi.minishop.business;
 
 public class CartItem {
+
   // -----------------------------------------------------------------------------------------------
   // ----- PROPRIETES ------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  private Long cartitemid;
+  private long cartitemid;
   private Product product;
-  private Long quantity;
+  private long quantity;
 
   // -----------------------------------------------------------------------------------------------
   // ----- CONSTRUCTEURS ---------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-
-  public CartItem(Long cartitemid, Product product, Long quantity) {
+  public CartItem(long cartitemid, Product product, long quantity) {
     this.cartitemid = cartitemid;
     this.product = product;
     this.quantity = quantity;
@@ -21,16 +21,27 @@ public class CartItem {
   // -----------------------------------------------------------------------------------------------
   // ----- GETTERS & SETTERS -----------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
+  public Long getCartitemid() {
+    return cartitemid;
+  }
 
-  public Long getCartitemid() {return cartitemid;}
+  public void setCartitemid(long cartitemid) {
+    this.cartitemid = cartitemid;
+  }
 
-  public void setCartitemid(Long cartitemid) {this.cartitemid = cartitemid;}
+  public Product getProduct() {
+    return product;
+  }
 
-  public Product getProduct() {return product;}
+  public void setProduct(Product product) {
+    this.product = product;
+  }
 
-  public void setProduct(Product product) {this.product = product;}
+  public Long getQuantity() {
+    return quantity;
+  }
 
-  public Long getQuantity() {return quantity;}
-
-  public void setQuantity(Long quantity) {this.quantity = quantity;}
+  public void setQuantity(long quantity) {
+    this.quantity = quantity;
+  }
 }
