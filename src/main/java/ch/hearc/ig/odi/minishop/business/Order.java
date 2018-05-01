@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Order {
+
   // -----------------------------------------------------------------------------------------------
   // ----- PROPRIETES ------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
@@ -27,19 +28,35 @@ public class Order {
   // -----------------------------------------------------------------------------------------------
   // ----- GETTERS & SETTERS -----------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  public Long getOrderid() {return orderid;}
+  public Long getOrderid() {
+    return orderid;
+  }
 
-  public void setOrderid(Long orderid) {this.orderid = orderid;}
+  public void setOrderid(Long orderid) {
+    this.orderid = orderid;
+  }
 
-  public Date getOrderdate() {return orderdate;}
+  public Date getOrderdate() {
+    return orderdate;
+  }
 
-  public void setOrderdate(Date orderdate) {this.orderdate = orderdate;}
+  public void setOrderdate(Date orderdate) {
+    this.orderdate = orderdate;
+  }
 
-  public String getOrderstatus() {return orderstatus;}
+  public String getOrderstatus() {
+    return orderstatus;
+  }
 
-  public void setOrderstatus(String orderstatus) {this.orderstatus = orderstatus;}
+  public void setOrderstatus(String orderstatus) {
+    this.orderstatus = orderstatus;
+  }
 
-  public List<OrderLine> getContent() {return content;}
+  public List<OrderLine> getContent() {
+    return content;
+  }
 
-  public void setContent(List<OrderLine> content) {this.content = content;}
+  public void setContent(List<OrderLine> content) {
+    this.content = content;
+  }
 }
