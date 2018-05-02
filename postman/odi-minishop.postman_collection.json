@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "odi-minishop",
-		"_postman_id": "534c3c81-b4c2-2a50-682c-98b10addb230",
+		"_postman_id": "685d473f-fefb-ad89-094a-9ad6c686e266",
 		"description": "Jeux de requêtes pour tester le fonctionnement du projet \"Minishop\" dans le cadre du cours \"Outils de développement intégrés\".",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -17,10 +17,7 @@
 						"url": "http://localhost:8080/minishop/api/customer",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -82,10 +79,7 @@
 						"url": "http://localhost:8080/minishop/api/customer/101",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -96,30 +90,7 @@
 						"url": "http://localhost:8080/minishop/api/customer/101",
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "Update a customer",
-					"request": {
-						"url": "http://localhost:8080/minishop/api/customer/101",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "[{\"customerid\":101,\"email\":\"pano@mail.com\",\"firstname\":\"Normande\",\"lastname\":\"Paratte\",\"phone\":\"078 888 88 88\",\"username\":\"pano\"}]"
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -136,10 +107,7 @@
 						"url": "http://localhost:8080/minishop/api/product",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -176,7 +144,7 @@
 								},
 								{
 									"key": "price",
-									"value": "priceTestPM",
+									"value": "2.00",
 									"description": ""
 								}
 							]
@@ -191,10 +159,7 @@
 						"url": "http://localhost:8080/minishop/api/product/101",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -225,10 +190,7 @@
 						"url": "http://localhost:8080/minishop/api/product/101",
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -278,10 +240,7 @@
 						"url": "http://localhost:8080/minishop/api/customer/101/cart/101",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -309,7 +268,7 @@
 								},
 								{
 									"key": "quantity",
-									"value": "101",
+									"value": "39",
 									"description": "",
 									"type": "text"
 								}
@@ -358,10 +317,7 @@
 						"url": "http://localhost:8080/minishop/api/customer/101/cart/101/total",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -372,10 +328,7 @@
 						"url": "http://localhost:8080/minishop/api/customer/101/cart/101/item/101",
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -392,10 +345,7 @@
 						"url": "http://localhost:8080/minishop/api/order",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []
@@ -433,10 +383,7 @@
 						"url": "http://localhost:8080/minishop/api/order/101",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"description": ""
 					},
 					"response": []

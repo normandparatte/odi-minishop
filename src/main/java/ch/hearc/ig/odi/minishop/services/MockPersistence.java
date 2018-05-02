@@ -252,7 +252,6 @@ public class MockPersistence {
    */
   public Product createProduct(long productid, double price, String productname, String description,
       String category, String status) {
-    Long id = idCounter++;
     Product product = new Product(idCounterProduct++, price, productname, description, category,
         status);
     products.put(product.getProductid(), product);
