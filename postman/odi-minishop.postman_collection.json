@@ -103,26 +103,6 @@
 						"description": ""
 					},
 					"response": []
-				},
-				{
-					"name": "Update a customer",
-					"request": {
-						"url": "http://localhost:8080/minishop/api/customer/101",
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "[{\"customerid\":101,\"email\":\"pano@mail.com\",\"firstname\":\"Normande\",\"lastname\":\"Paratte\",\"phone\":\"078 888 88 88\",\"username\":\"pano\"}]"
-						},
-						"description": ""
-					},
-					"response": []
 				}
 			]
 		},
