@@ -47,7 +47,7 @@ public class StoreRessource {
       @FormParam("quantity") int quantity
   ) {
     Cart newCart = new Cart();
-    newCart.addProduct(persistenceService.getProduct(productid), quantity);
+    newCart.addProduct(1, persistenceService.getProduct(productid), quantity);
     return newCart;
   }
 
@@ -70,7 +70,8 @@ public class StoreRessource {
       @FormParam("quantity") int quantity
   ) {
     Cart cart = persistenceService.getCart(cartid);
-    cart.addProduct(persistenceService.getProduct(productid), quantity);
+    persistenceService.addCartItem(cart, productid, quantity);
+
     return cart;
   }
 

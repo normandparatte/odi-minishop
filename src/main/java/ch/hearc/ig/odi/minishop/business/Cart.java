@@ -37,8 +37,8 @@ public class Cart {
    * @param product Produit à ajouter
    * @param quantity Quantité du produit
    */
-  public void addProduct(Product product, int quantity) {
-    content.add(new CartItem(product, quantity));
+  public void addProduct(int cartItemId, Product product, int quantity) {
+    content.add(new CartItem(cartItemId, product, quantity));
   }
 
   /**
