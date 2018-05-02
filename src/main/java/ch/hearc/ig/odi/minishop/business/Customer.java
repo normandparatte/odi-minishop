@@ -26,9 +26,18 @@ public class Customer implements Serializable {
   // ----- CONSTRUCTEURS ---------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
   public Customer(){
-
   }
 
+  /**
+   * Constructeur complet du client
+   *
+   * @param customerid Numéro identifiant
+   * @param firstname Prénom
+   * @param lastname Nom
+   * @param username Nom d'utilisateur
+   * @param email Email
+   * @param phone Téléphone
+   */
   public Customer(long customerid, String firstname, String lastname, String username, String email,
       String phone) {
     this.customerid = customerid;

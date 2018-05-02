@@ -20,6 +20,14 @@ public class OrderLine {
   // -----------------------------------------------------------------------------------------------
   // ----- CONSTRUCTEURS ---------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
+
+  /**
+   * Constructeur complet d'une ligne de commande
+   *
+   * @param orderlineposition Position de la ligne de la commande
+   * @param product Produit de la ligne
+   * @param quantity Quantité du produit pour la commande
+   */
   public OrderLine(long orderlineposition, Product product, long quantity) {
     this.orderlineposition = orderlineposition;
     this.product = product;

@@ -32,6 +32,11 @@ public class ProductResource {
   @Inject
   private MockPersistence persistenceService;
 
+  /**
+   * Méthode GET permettant de récupérer tous les produits
+   *
+   * @return Liste des produits
+   */
   @GET
   @Path("/")
   @Produces(MediaType.APPLICATION_JSON)
@@ -39,13 +44,32 @@ public class ProductResource {
     return persistenceService.getAllProducts();
   }
 
+  /**
+   * Méthode GET permettant de récupérer un produit donné
+   *
+   * @param productid Numéro identifiant
+   * @return Produit demandé
+   */
   @GET
   @Path("/{productid}")
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-  public Product getProduct(@PathParam("productid") Long productid) {
+  public Product getProduct(
+      @PathParam("productid") Long productid
+  ) {
     return persistenceService.getProduct(productid);
   }
 
+  /**
+   * Méthode POST permettant d'ajouter un produit
+   *
+   * @param productid Numéro identifiant
+   * @param price Prix
+   * @param productname Nom
+   * @param description Description
+   * @param category Catégorie
+   * @param status Statut
+   * @return Produit créé
+   */
   @POST
   @Path("/")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -62,6 +86,12 @@ public class ProductResource {
     return product;
   }
 
+  /**
+   * Méthode PUT permettant de modifié un produit donné
+   *
+   * @param pr Produit avec modifications
+   * @return Produit modifié
+   */
   @PUT
   @Path("/{productid}")
   @Consumes(MediaType.APPLICATION_JSON)
@@ -72,9 +102,16 @@ public class ProductResource {
     return product;
   }
 
+  /**
+   * Méthode DELETE permettant de supprimer un produit donné
+   *
+   * @param productid Numéro du produit
+   */
   @DELETE
   @Path("/{productid}")
-  public void deleteProduct(@PathParam("productid") Long productid) {
+  public void deleteProduct(
+      @PathParam("productid") Long productid
+  ) {
     persistenceService.deleteProduct(productid);
   }
 }
