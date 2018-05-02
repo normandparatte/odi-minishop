@@ -150,14 +150,17 @@ public class MockPersistence {
     return customer;
   }
 
-  public Customer updateCustomer(long id, String firstName, String lastName, String username,
-      String email, String phone) {
-    Customer customer = customers.get(id);
-    customer.setFirstname(firstName);
-    customer.setFirstname(lastName);
-    customer.setFirstname(username);
-    customer.setFirstname(email);
-    customer.setFirstname(phone);
+  public Customer updateCustomer(Customer cust) {
+    Customer customer = getCustomer(cust.getCustomerid());
+
+    customer.setFirstname(cust.getFirstname());
+    customer.setLastname(cust.getLastname());
+    customer.setUsername(cust.getUsername());
+    customer.setEmail(cust.getEmail());
+    customer.setPhone(cust.getPhone());
+
+    customers.put(customer.getCustomerid(), customer);
+
     return customer;
   }
 
@@ -240,7 +243,14 @@ public class MockPersistence {
   // -----------------------------------------------------------------------------------------------
   // ----- PANIER ----------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  public Cart getCart(int cartId) {
+  public Cart getCart(long cartId) {
     return carts.get(cartId);
+  }
+
+  public Cart updateCart(long cartId, long productId, int quantity) {
+    getCart(cartId).deleteProduct(productId);
+    getCart(cartId).addProduct(getProduct(productId), quantity);
+    carts.put(cartId, getCart(cartId));
+    return getCart(cartId);
   }
 }
