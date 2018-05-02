@@ -17,9 +17,10 @@ Le jeu de requêtes Postman est disponible à l'emplacement suivant :
 - ./postman/odi-minishop.postman_collection.json
 ### Artefact déployable
 Un artefact déployable est disponible à l'emplacement suivant :
-- ./finalwar/minishop:war exploded
+- ./finalwar/minishop.war
 
 ## Outils utilisés
+
 **- IDE :** IntelliJ IDEA (+GlassFish 5.0.0)
 
 **- API Testing** : Postman
@@ -29,13 +30,24 @@ Un artefact déployable est disponible à l'emplacement suivant :
 **- Navigateurs internet** : Google Chrome, Mozilla Firefox
 
 ### Utilisation de Github :
+
 - Chaque tâche à réaliser dans l'application correspond à une issue dans GitHub
+
 - Les issues sont regroupées par catégories selon les labels suivants :
+
 -- administratif
+
 -- bug
+
 -- documentation
+
 -- fonctionnalité
+
 -- optimisation
+
 -- tests
+
 - Le suivi du projet est géré par GitHub Projects de façon automatisé grâce aux issues
 
+## Eléments manquants ou incomplets
+- Les statuts des différentes classes sont au format "String" au lieu de "Enum"
