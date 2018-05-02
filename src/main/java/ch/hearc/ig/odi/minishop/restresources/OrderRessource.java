@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -45,5 +46,16 @@ public class OrderRessource {
     Order o = persistenceService
         .updateOrder(orderid, newstatus);
     return o;
+  }
+
+  @POST
+  @Path("/")
+  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  public Order submitOrder(
+      @FormParam("cartid") long cartid) {
+    Order order = persistenceService
+        .submitOrder(cartid);
+    return order;
   }
 }
