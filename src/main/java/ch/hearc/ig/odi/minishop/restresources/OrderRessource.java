@@ -9,6 +9,7 @@
 package ch.hearc.ig.odi.minishop.restresources;
 
 import ch.hearc.ig.odi.minishop.business.Order;
+import ch.hearc.ig.odi.minishop.exceptions.OrderExceptions;
 import ch.hearc.ig.odi.minishop.services.MockPersistence;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -53,8 +54,15 @@ public class OrderRessource {
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
   public Order getOrder(
       @PathParam("orderid") long orderid
-  ) {
-    return persistenceService.getOrder(orderid);
+  ) throws OrderExceptions {
+    Order o;
+
+    try {
+      o = persistenceService.getOrder(orderid);
+    } catch (Exception e) {
+      throw new OrderExceptions("404 - Not found");
+    }
+    return o;
   }
 
   /**
@@ -70,8 +78,15 @@ public class OrderRessource {
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
   public Order updateOrder(@PathParam("orderid") long orderid,
       @FormParam("newstatus") String newstatus
-  ) {
-    Order o = persistenceService.updateOrder(orderid, newstatus);
+  ) throws OrderExceptions {
+    Order o;
+
+    try {
+      o = persistenceService.updateOrder(orderid, newstatus);
+    } catch (Exception e) {
+      throw new OrderExceptions("400 - Status not updated");
+    }
+
     return o;
   }
 
@@ -87,8 +102,13 @@ public class OrderRessource {
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
   public Order submitOrder(
       @FormParam("cartid") long cartid
-  ) {
-    Order order = persistenceService.submitOrder(cartid);
+  ) throws OrderExceptions {
+    Order order;
+    try {
+      order = persistenceService.submitOrder(cartid);
+    } catch (Exception e) {
+      throw new OrderExceptions("400 - order was not created.");
+    }
     return order;
   }
 }
