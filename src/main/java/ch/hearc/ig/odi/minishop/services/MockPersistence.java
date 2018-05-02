@@ -395,4 +395,15 @@ public class MockPersistence {
 
     return cart;
   }
+
+  /**
+   * Méthode permettant de supprimer une ligne de produit
+   *
+   * @param cartId Numéro du panier
+   * @param itemId Numéro de la ligne de produit
+   */
+  public void deleteCartItem(long cartId, long itemId) {
+    carts.get(cartId).getContent().remove(itemId);
+    carts.get(cartId).deleteProduct(itemId);
+  }
 }

@@ -108,7 +108,7 @@ public class ProductResource {
   @DELETE
   @Path("/{productid}")
   public void deleteProduct(
-      @PathParam("productid") Long productid
+      @PathParam("productid") long productid
   ) {
     persistenceService.deleteProduct(productid);
   }
