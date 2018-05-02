@@ -12,8 +12,7 @@ public class CartItem {
   // -----------------------------------------------------------------------------------------------
   // ----- CONSTRUCTEURS ---------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  public CartItem(long cartitemid, Product product, long quantity) {
-    this.cartitemid = cartitemid;
+  public CartItem(Product product, long quantity) {
     this.product = product;
     this.quantity = quantity;
   }
