@@ -21,7 +21,7 @@ public class CartItem {
   // -----------------------------------------------------------------------------------------------
   // ----- GETTERS & SETTERS -----------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  public Long getCartitemid() {
+  public long getCartitemid() {
     return cartitemid;
   }
 
@@ -37,7 +37,7 @@ public class CartItem {
     this.product = product;
   }
 
-  public Long getQuantity() {
+  public long getQuantity() {
     return quantity;
   }
 
