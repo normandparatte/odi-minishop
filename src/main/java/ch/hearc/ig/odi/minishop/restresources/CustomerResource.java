@@ -9,6 +9,7 @@
 package ch.hearc.ig.odi.minishop.restresources;
 
 import ch.hearc.ig.odi.minishop.business.Customer;
+import ch.hearc.ig.odi.minishop.exceptions.CustomerExceptions;
 import ch.hearc.ig.odi.minishop.services.MockPersistence;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -54,8 +55,14 @@ public class CustomerResource {
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
   public Customer getCustomer(
       @PathParam("customerid") Long customerid
-  ) {
-    return persistenceService.getCustomer(customerid);
+  ) throws CustomerExceptions {
+    Customer customer;
+    try {
+      customer = persistenceService.getCustomer(customerid);
+    } catch (Exception e) {
+      throw new CustomerExceptions("404 - The customer does not exist");
+    }
+    return customer;
   }
 
   /**
@@ -77,9 +84,13 @@ public class CustomerResource {
       @FormParam("lastName") String lastName,
       @FormParam("username") String username,
       @FormParam("email") String email,
-      @FormParam("phone") String phone) {
-    Customer customer = persistenceService
-        .createCustomer(firstName, lastName, username, email, phone);
+      @FormParam("phone") String phone) throws CustomerExceptions {
+    Customer customer;
+    try {
+      customer = persistenceService.createCustomer(firstName, lastName, username, email, phone);
+    } catch (Exception e) {
+      throw new CustomerExceptions("400 - customer couldn't have been created");
+    }
     return customer;
   }
 
@@ -93,9 +104,13 @@ public class CustomerResource {
   @Path("/{customerid}")
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces({MediaType.APPLICATION_JSON})
-  public Customer updateCustomer(Customer cust) {
-    Customer customer = persistenceService
-        .updateCustomer(cust);
+  public Customer updateCustomer(Customer cust) throws CustomerExceptions {
+    Customer customer = null;
+    try {
+      customer = persistenceService.updateCustomer(cust);
+    } catch (Exception e) {
+      throw new CustomerExceptions("400 - customer couldn't have been updated");
+    }
     return customer;
   }
 
@@ -107,7 +122,11 @@ public class CustomerResource {
   @DELETE
   @Path("/{customerid}")
   public void deleteCustomer(
-      @PathParam("customerid") Long personid) {
-    persistenceService.deleteCustomer(personid);
+      @PathParam("customerid") Long personid) throws CustomerExceptions {
+    try {
+      persistenceService.deleteCustomer(personid);
+    } catch (Exception e) {
+      throw new CustomerExceptions("400 - Customer couldn't have been deleted");
+    }
   }
 }
