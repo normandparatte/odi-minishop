@@ -9,10 +9,24 @@ Le framework JAX-RS est utilisé afin de développer l'API.
 
 Le but est de couvrir tout ce qui est défini dans l'API, disponible sur cyberlearn à [cette adresse](https://cyberlearn.hes-so.ch/pluginfile.php/2691039/mod_resource/content/6/index.html)
 
+## Livrables
+### Sources
+Toutes les sources sont disponibles dans le repository du projet.
+### Jeu de requêtes Postman 
+Le jeu de requêtes Postman est disponible à l'emplacement suivant :
+- ./postman/odi-minishop.postman_collection.json
+### Artefact déployable
+Un artefact déployable est disponible à l'emplacement suivant :
+- ./finalwar/minishop:war exploded
+
 ## Outils utilisés
-**- IDE :** IntelliJ IDEA (+GlassFish 5.0.0) 
+**- IDE :** IntelliJ IDEA (+GlassFish 5.0.0)
+
 **- API Testing** : Postman
+
 **- VCS** : Git, GitHub
+
+**- Navigateurs internet** : Google Chrome, Mozilla Firefox
 
 ### Utilisation de Github :
 - Chaque tâche à réaliser dans l'application correspond à une issue dans GitHub
@@ -24,6 +38,4 @@ Le but est de couvrir tout ce qui est défini dans l'API, disponible sur cyberle
 -- optimisation
 -- tests
 - Le suivi du projet est géré par GitHub Projects de façon automatisé grâce aux issues
-
-
 
