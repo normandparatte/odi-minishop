@@ -10,6 +10,7 @@ package ch.hearc.ig.odi.minishop.restresources;
 
 import ch.hearc.ig.odi.minishop.business.Customer;
 import ch.hearc.ig.odi.minishop.business.Product;
+import ch.hearc.ig.odi.minishop.exceptions.ProductExceptions;
 import ch.hearc.ig.odi.minishop.services.MockPersistence;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -55,8 +56,12 @@ public class ProductResource {
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
   public Product getProduct(
       @PathParam("productid") Long productid
-  ) {
+  ) throws ProductExceptions {
+    try {
     return persistenceService.getProduct(productid);
+    } catch (Exception e) {
+      throw new ProductExceptions("404 - The product does not exist.");
+    }
   }
 
   /**
@@ -78,8 +83,14 @@ public class ProductResource {
       @FormParam("productname") String productname,
       @FormParam("description") String description,
       @FormParam("category") String category,
-      @FormParam("status") String status) {
-    Product product = persistenceService.createProduct(price, productname, description, category, status);
+      @FormParam("status") String status) throws ProductExceptions {
+    Product product;
+    try{
+        product = persistenceService
+        .createProduct(price, productname, description, category, status);
+    } catch (Exception e) {
+      throw new ProductExceptions("400 - product couldn't have been created");
+    }
     return product;
   }
 
@@ -93,9 +104,14 @@ public class ProductResource {
   @Path("/{productid}")
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-  public Product updateProduct(Product pr) {
-    Product product = persistenceService
+  public Product updateProduct(Product pr) throws ProductExceptions {
+    Product product;
+    try{
+    product = persistenceService
         .updateProduct(pr);
+    } catch (Exception e) {
+      throw new ProductExceptions("400 - product couldn't have been updated");
+    }
     return product;
   }
 
@@ -108,7 +124,11 @@ public class ProductResource {
   @Path("/{productid}")
   public void deleteProduct(
       @PathParam("productid") long productid
-  ) {
-    persistenceService.deleteProduct(productid);
+  ) throws ProductExceptions {
+    try {
+      persistenceService.deleteProduct(productid);
+    } catch (Exception e) {
+      throw new ProductExceptions("400 - Product not deleted");
+    }
   }
 }
