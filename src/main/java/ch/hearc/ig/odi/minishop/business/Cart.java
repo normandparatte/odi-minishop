@@ -22,8 +22,12 @@ public class Cart {
   // -----------------------------------------------------------------------------------------------
   // ----- FONCTIONS METIERS -----------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
-  public void ajouterProduit(Product product, int quantity) {
+  public void addProduct(Product product, int quantity) {
     content.add(new CartItem(product, quantity));
+  }
+
+  public void deleteProduct(long itemIndex) {
+    content.remove(itemIndex);
   }
 
   // -----------------------------------------------------------------------------------------------

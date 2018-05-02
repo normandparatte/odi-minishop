@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -30,7 +31,7 @@ public class StoreRessource {
       @FormParam("quantity") int quantity
   ) {
     Cart newCart = new Cart();
-    newCart.ajouterProduit(persistenceService.getProduct(productid), quantity);
+    newCart.addProduct(persistenceService.getProduct(productid), quantity);
     return newCart;
   }
 
@@ -44,7 +45,7 @@ public class StoreRessource {
       @FormParam("quantity") int quantity
   ) {
     Cart cart = persistenceService.getCart(cartid);
-    cart.ajouterProduit(persistenceService.getProduct(productid), quantity);
+    cart.addProduct(persistenceService.getProduct(productid), quantity);
     return cart;
   }
 
@@ -66,5 +67,14 @@ public class StoreRessource {
       @PathParam("cartId") long cartId
   ) {
     return persistenceService.getCart(cartId).getTotal();
+  }
+
+  @DELETE
+  @Path("/{cartId}/item/{itemId}")
+  public void deleteProduct(
+      @PathParam("cartId") long cartId,
+      @PathParam("itemId") long itemId
+  ) {
+    persistenceService.getCart(cartId).deleteProduct(itemId);
   }
 }
