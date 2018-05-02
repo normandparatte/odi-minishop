@@ -1,3 +1,11 @@
+/*
+ *  Etablissement : HEG-ARC
+ *  Cours : ODI SP18
+ *  Projet : Minishop
+ *  Auteurs : Normand Paratte & Francis Hêche
+ *  Date : 02.05.18 15:34
+ */
+
 package ch.hearc.ig.odi.minishop.services;
 
 
