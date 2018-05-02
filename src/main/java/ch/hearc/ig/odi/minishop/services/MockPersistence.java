@@ -242,7 +242,6 @@ public class MockPersistence {
   /**
    * Méthode permettant de créer un produit
    *
-   * @param productid Numéro d'identification
    * @param price Prix
    * @param productname Nom
    * @param description Description
@@ -250,7 +249,7 @@ public class MockPersistence {
    * @param status Statut
    * @return Produit créé
    */
-  public Product createProduct(long productid, double price, String productname, String description,
+  public Product createProduct(double price, String productname, String description,
       String category, String status) {
     Product product = new Product(idCounterProduct++, price, productname, description, category,
         status);
