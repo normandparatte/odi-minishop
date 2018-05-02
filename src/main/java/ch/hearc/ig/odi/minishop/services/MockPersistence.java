@@ -176,7 +176,7 @@ public class MockPersistence {
    *
    * @return Client créé
    */
-  public Customer createCustomer(long customerid, String firstname, String lastname,
+  public Customer createCustomer(String firstname, String lastname,
       String username,
       String email, String phone) {
     Long id = idCounter++;
