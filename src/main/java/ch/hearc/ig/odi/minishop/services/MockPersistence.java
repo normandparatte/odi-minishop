@@ -109,10 +109,10 @@ public class MockPersistence {
     orders.put(o2.getOrderid(), o2);
     orders.put(o3.getOrderid(), o3);
 
-    CartItem ci1 = new CartItem(p1, 2);
-    CartItem ci2 = new CartItem(p3, 1);
-    CartItem ci3 = new CartItem(p1, 3);
-    CartItem ci4 = new CartItem(p2, 1);
+    CartItem ci1 = new CartItem(101, p1, 2);
+    CartItem ci2 = new CartItem(101, p3, 1);
+    CartItem ci3 = new CartItem(101, p1, 3);
+    CartItem ci4 = new CartItem(101, p2, 1);
 
     List<CartItem> cis1 = new ArrayList<>();
     cis1.add(ci1);
@@ -255,10 +255,23 @@ public class MockPersistence {
     return carts.get(cartId);
   }
 
+  public CartItem getCartItem(Cart cart, long productId){
+    for(int i = 0; i<cart.getContent().size();i++) {
+      if (productId==cart.getContent().get(i).getProduct().getProductid()) {
+        return cart.getContent().get(0);
+      }
+    }
+    return null;
+  }
+
   public Cart updateCart(long cartId, long productId, int quantity) {
-    getCart(cartId).deleteProduct(productId);
-    getCart(cartId).addProduct(getProduct(productId), quantity);
-    carts.put(cartId, getCart(cartId));
-    return getCart(cartId);
+    Cart cart = getCart(cartId);
+    CartItem ci = getCartItem(cart, productId);
+
+    cart.updateProduct(ci, quantity);
+
+    carts.put(cart.getCartid(),cart);
+
+    return cart;
   }
 }

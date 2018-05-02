@@ -85,7 +85,7 @@ public class StoreRessource {
   public Cart updateCart(
       @PathParam("id") long customerId,
       @PathParam("cartId") long cartId,
-      @FormParam("productId") long productId,
+      @FormParam("productid") long productId,
       @FormParam("quantity") int quantity
   ) {
     Cart c = persistenceService.updateCart(cartId, productId, quantity);
