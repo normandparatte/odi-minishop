@@ -1,6 +1,8 @@
 package ch.hearc.ig.odi.minishop.services;
 
 
+import ch.hearc.ig.odi.minishop.business.Cart;
+import ch.hearc.ig.odi.minishop.business.CartItem;
 import ch.hearc.ig.odi.minishop.business.Customer;
 import ch.hearc.ig.odi.minishop.business.Order;
 import ch.hearc.ig.odi.minishop.business.OrderLine;
@@ -22,6 +24,7 @@ public class MockPersistence {
   private Map<Long, Customer> customers;
   private Map<Long, Product> products;
   private Map<Long, Order> orders;
+  private Map<Long, Cart> carts;
   private long idCounter = 3000;
 
   @PostConstruct
@@ -29,6 +32,7 @@ public class MockPersistence {
     customers = new HashMap<>();
     products = new HashMap<>();
     orders = new HashMap<>();
+    carts = new HashMap<>();
     generateMockData();
   }
 
@@ -88,6 +92,32 @@ public class MockPersistence {
     orders.put(o1.getOrderid(),o1);
     orders.put(o2.getOrderid(),o2);
     orders.put(o3.getOrderid(),o3);
+
+    CartItem ci1 = new CartItem(p1, 2);
+    CartItem ci2 = new CartItem(p3, 1);
+    CartItem ci3 = new CartItem(p1, 3);
+    CartItem ci4 = new CartItem(p2, 1);
+
+    List<CartItem> cis1 = new ArrayList<>();
+    cis1.add(ci1);
+    cis1.add(ci2);
+
+    Cart cart1 = new Cart();
+    cart1.setCartid(101);
+    cart1.setCartstatus("open");
+    cart1.setContent(cis1);
+
+    List<CartItem> cis2 = new ArrayList<>();
+    cis2.add(ci3);
+    cis2.add(ci4);
+
+    Cart cart2 = new Cart();
+    cart2.setCartid(102);
+    cart2.setCartstatus("open");
+    cart2.setContent(cis2);
+
+    carts.put(cart1.getCartid(), cart1);
+    carts.put(cart2.getCartid(), cart2);
   }
 
   // -----------------------------------------------------------------------------------------------
@@ -174,12 +204,18 @@ public class MockPersistence {
   public Order getOrder(long id) {
     return orders.get(id);
   }
-
+  
   public Order updateOrder(long id, String status){
     Order o = orders.get(id);
-
     o.setOrderstatus(status);
-
     return o;
+  }
+
+  // -----------------------------------------------------------------------------------------------
+  // ----- PANIER ----------------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------
+  public Cart getCart(int cartId) {
+    ArrayList<Cart> carts = new ArrayList(this.carts.values());
+    return carts.get(cartId);
   }
 }
