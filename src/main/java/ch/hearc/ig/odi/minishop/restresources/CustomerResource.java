@@ -74,14 +74,13 @@ public class CustomerResource {
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
   public Customer createCustomer(
-      @FormParam("id") long id,
       @FormParam("firstName") String firstName,
       @FormParam("lastName") String lastName,
       @FormParam("username") String username,
       @FormParam("email") String email,
       @FormParam("phone") String phone) {
     Customer customer = persistenceService
-        .createCustomer(id, firstName, lastName, username, email, phone);
+        .createCustomer(firstName, lastName, username, email, phone);
     return customer;
   }
 

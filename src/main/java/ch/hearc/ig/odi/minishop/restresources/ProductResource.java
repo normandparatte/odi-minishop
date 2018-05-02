@@ -62,7 +62,6 @@ public class ProductResource {
   /**
    * Méthode POST permettant d'ajouter un produit
    *
-   * @param productid Numéro identifiant
    * @param price Prix
    * @param productname Nom
    * @param description Description
@@ -75,14 +74,13 @@ public class ProductResource {
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
   public Product createProduct(
-      @FormParam("productid") long productid,
       @FormParam("price") double price,
       @FormParam("productname") String productname,
       @FormParam("description") String description,
       @FormParam("category") String category,
       @FormParam("status") String status) {
     Product product = persistenceService
-        .createProduct(productid, price, productname, description, category, status);
+        .createProduct(price, productname, description, category, status);
     return product;
   }
 
