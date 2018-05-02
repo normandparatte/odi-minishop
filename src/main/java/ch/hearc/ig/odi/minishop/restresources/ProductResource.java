@@ -79,8 +79,7 @@ public class ProductResource {
       @FormParam("description") String description,
       @FormParam("category") String category,
       @FormParam("status") String status) {
-    Product product = persistenceService
-        .createProduct(price, productname, description, category, status);
+    Product product = persistenceService.createProduct(price, productname, description, category, status);
     return product;
   }
 

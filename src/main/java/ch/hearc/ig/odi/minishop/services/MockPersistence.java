@@ -38,6 +38,7 @@ public class MockPersistence {
   private long idCounterOrderLine;
   private long idCounterCustomer = 101;
   private long idCounterProduct = 101;
+  private long idCounterCartItem;
   Date ajd = new Date();
 
   /**
@@ -120,10 +121,13 @@ public class MockPersistence {
     orders.put(o2.getOrderid(), o2);
     orders.put(o3.getOrderid(), o3);
 
-    CartItem ci1 = new CartItem(101, p1, 2);
-    CartItem ci2 = new CartItem(101, p3, 1);
-    CartItem ci3 = new CartItem(101, p1, 3);
-    CartItem ci4 = new CartItem(101, p2, 1);
+    idCounterCartItem = 1;
+    CartItem ci1 = new CartItem(idCounterCartItem++, p1, 2);
+    CartItem ci2 = new CartItem(idCounterCartItem++, p3, 1);
+
+    idCounterCartItem = 1;
+    CartItem ci3 = new CartItem(idCounterCartItem++, p1, 3);
+    CartItem ci4 = new CartItem(idCounterCartItem++, p2, 1);
 
     List<CartItem> cis1 = new ArrayList<>();
     cis1.add(ci1);
@@ -242,7 +246,6 @@ public class MockPersistence {
   /**
    * Méthode permettant de créer un produit
    *
-   * @param productid Numéro d'identification
    * @param price Prix
    * @param productname Nom
    * @param description Description
@@ -250,7 +253,7 @@ public class MockPersistence {
    * @param status Statut
    * @return Produit créé
    */
-  public Product createProduct(long productid, double price, String productname, String description,
+  public Product createProduct(double price, String productname, String description,
       String category, String status) {
     Product product = new Product(idCounterProduct++, price, productname, description, category,
         status);
@@ -324,6 +327,12 @@ public class MockPersistence {
     orders.put(o.getOrderid(), o);
 
     return o;
+  }
+
+  public Cart addCartItem(Cart cart, long productid, int quantity){
+    cart.addProduct(cart.getContent().size()+1, getProduct(productid), quantity);
+
+    return cart;
   }
 
   /**
