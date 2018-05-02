@@ -9,6 +9,7 @@
 package ch.hearc.ig.odi.minishop.restresources;
 
 import ch.hearc.ig.odi.minishop.business.Cart;
+import ch.hearc.ig.odi.minishop.exceptions.StoreExceptions;
 import ch.hearc.ig.odi.minishop.services.MockPersistence;
 import java.math.BigDecimal;
 import javax.enterprise.context.RequestScoped;
@@ -45,9 +46,13 @@ public class StoreRessource {
       @PathParam("id") long customerid,
       @FormParam("productid") long productid,
       @FormParam("quantity") int quantity
-  ) {
+  ) throws StoreExceptions {
     Cart newCart = new Cart();
-    newCart.addProduct(1, persistenceService.getProduct(productid), quantity);
+    try {
+      newCart.addProduct(1, persistenceService.getProduct(productid), quantity);
+    } catch (Exception e) {
+      throw new StoreExceptions("400 - Item not added. error.");
+    }
     return newCart;
   }
 
@@ -68,9 +73,16 @@ public class StoreRessource {
       @PathParam("cartid") long cartid,
       @FormParam("productid") long productid,
       @FormParam("quantity") int quantity
-  ) {
-    Cart cart = persistenceService.getCart(cartid);
-    persistenceService.addCartItem(cart, productid, quantity);
+  ) throws StoreExceptions {
+
+    Cart cart;
+
+    try {
+      cart = persistenceService.getCart(cartid);
+      persistenceService.addCartItem(cart, productid, quantity);
+    } catch (Exception e) {
+      throw new StoreExceptions("400 - item not added. error.");
+    }
 
     return cart;
   }
@@ -88,8 +100,14 @@ public class StoreRessource {
   public Cart getCart(
       @PathParam("id") long id,
       @PathParam("cartId") long cartId
-  ) {
-    return persistenceService.getCart(cartId);
+  ) throws StoreExceptions {
+    Cart cart;
+    try {
+      cart = persistenceService.getCart(cartId);
+    } catch (Exception e) {
+      throw new StoreExceptions("404 - Not found");
+    }
+    return cart;
   }
 
   /**
@@ -126,8 +144,15 @@ public class StoreRessource {
       @PathParam("cartId") long cartId,
       @FormParam("productid") long productId,
       @FormParam("quantity") int quantity
-  ) {
-    Cart c = persistenceService.updateCart(cartId, productId, quantity);
+  ) throws StoreExceptions {
+    Cart c;
+
+    try {
+      c = persistenceService.updateCart(cartId, productId, quantity);
+    } catch (Exception e) {
+      throw new StoreExceptions("400 - item not added.");
+    }
+
     return c;
   }
 
@@ -142,7 +167,13 @@ public class StoreRessource {
   public void deleteProduct(
       @PathParam("cartId") long cartId,
       @PathParam("itemId") long itemId
-  ) {
-    persistenceService.deleteCartItem(cartId, itemId);
+  ) throws StoreExceptions {
+    try {
+      persistenceService.deleteCartItem(cartId, itemId);
+    } catch (Exception e) {
+      throw new StoreExceptions("400 - error.");
+    }
+
+
   }
 }
