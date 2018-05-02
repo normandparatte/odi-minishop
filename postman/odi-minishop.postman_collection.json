@@ -261,14 +261,14 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "id",
+									"key": "productid",
 									"value": "101",
 									"description": "",
 									"type": "text"
 								},
 								{
-									"key": "cartId",
-									"value": "101",
+									"key": "quantity",
+									"value": "39",
 									"description": "",
 									"type": "text"
 								}
