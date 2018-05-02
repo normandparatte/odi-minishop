@@ -1,0 +1,54 @@
+package ch.hearc.ig.odi.minishop.business;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cart {
+
+  // -----------------------------------------------------------------------------------------------
+  // ----- PROPRIETES ------------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------
+  private long cartid;
+  private String cartstatus;
+  private List<CartItem> content = new ArrayList<>();
+
+  // -----------------------------------------------------------------------------------------------
+  // ----- CONSTRUCTEURS ---------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------
+  public Cart() {
+  }
+
+  // -----------------------------------------------------------------------------------------------
+  // ----- FONCTIONS METIERS -----------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------
+  public void ajouterProduit(Product product, int quantity) {
+    content.add(new CartItem(product, quantity));
+  }
+
+  // -----------------------------------------------------------------------------------------------
+  // ----- GETTERS & SETTERS -----------------------------------------------------------------------
+  // -----------------------------------------------------------------------------------------------
+  public long getCartid() {
+    return cartid;
+  }
+
+  public void setCartid(long cartid) {
+    this.cartid = cartid;
+  }
+
+  public String getCartstatus() {
+    return cartstatus;
+  }
+
+  public void setCartstatus(String cartstatus) {
+    this.cartstatus = cartstatus;
+  }
+
+  public List<CartItem> getContent() {
+    return content;
+  }
+
+  public void setContent(List<CartItem> content) {
+    this.content = content;
+  }
+}

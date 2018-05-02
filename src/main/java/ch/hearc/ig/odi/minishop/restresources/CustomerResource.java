@@ -46,7 +46,7 @@ public class CustomerResource {
   @GET
   @Path("/")
   @Produces(MediaType.APPLICATION_JSON)
-  public List<Customer> getPeople() {
+  public List<Customer> getCustomer() {
     return persistenceService.getAllCustomers();
   }
 
@@ -77,7 +77,7 @@ public class CustomerResource {
   @Path("/{customerid}")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-  public Customer updatePeople(
+  public Customer updateCustomer(
       @FormParam("id") long id,
       @FormParam("firstName") String firstName,
       @FormParam("lastName") String lastName,

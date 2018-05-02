@@ -1,0 +1,441 @@
+{
+	"variables": [],
+	"info": {
+		"name": "odi-minishop",
+		"_postman_id": "685d473f-fefb-ad89-094a-9ad6c686e266",
+		"description": "Jeux de requêtes pour tester le fonctionnement du projet \"Minishop\" dans le cadre du cours \"Outils de développement intégrés\".",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"description": "",
+			"item": [
+				{
+					"name": "Get all customer",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/customer",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create a customer",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/customer",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "userTestPM",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "firstname",
+									"value": "firstTestPM",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "lastTestPM",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "emailTestPM",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "phoneTestPM",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single customer",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/customer/101",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a customer",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/customer/101",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update a customer",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/customer/101",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\"customerid\":101,\"email\":\"pano@mail.com\",\"firstname\":\"Normande\",\"lastname\":\"Paratte\",\"phone\":\"078 888 88 88\",\"username\":\"pano\"}]"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"description": "",
+			"item": [
+				{
+					"name": "Get all products",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/product",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create a product",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/product",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "productname",
+									"value": "prodTestPM",
+									"description": ""
+								},
+								{
+									"key": "description",
+									"value": "descTestPM",
+									"description": ""
+								},
+								{
+									"key": "category",
+									"value": "catTestPM",
+									"description": ""
+								},
+								{
+									"key": "price",
+									"value": "priceTestPM",
+									"description": ""
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get a single product",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/product/101",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update a product",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/product/101",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productid\" : 101,\r\n  \"price\" : 239.90,\r\n  \"productname\" : \"Air de Neuchâtel en tonneau\",\r\n  \"description\" : \"Air du bord de lac neuchâtelois dans un somptueux tonneau en accacia du Mexique\",\r\n  \"category\" : \"air\",\r\n  \"status\" : \"active\"\r\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a product",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/product/101",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"description": "",
+			"item": [
+				{
+					"name": "Add an item to a new shopping cart",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/customer/101/cart",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "productid",
+									"value": "101",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "2",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "View shopping cart content",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/customer/101/cart/101",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Add an item to a given shopping cart",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/customer/101/cart/101",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "101",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "cartId",
+									"value": "101",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update a shopping cart",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/customer/101/cart/101",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "productid",
+									"value": "101",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "3",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "View total price of given shopping cart",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/customer/101/cart/101/total",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete an item in a given cart",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/customer/101/cart/101/item/101",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"description": "",
+			"item": [
+				{
+					"name": "Get all orders",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/order",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Submit an order (checkout)",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/order",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "cartid",
+									"value": "101",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get a given order",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/order/101",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Update the status of a given order",
+					"request": {
+						"url": "http://localhost:8080/minishop/api/order/101",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "newstatus",
+									"value": "close",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
