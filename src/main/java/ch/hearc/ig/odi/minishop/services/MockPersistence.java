@@ -329,9 +329,17 @@ public class MockPersistence {
     return o;
   }
 
+  /**
+   * Méthode permettant d'ajouter un article dans un panier donné
+   * @param cart Panier dans lequel ajouter l'article
+   * @param productid id du produit à ajouter
+   * @param quantity quantité du produit à ajouter
+   * @return panier avec le nouvel article
+   */
   public Cart addCartItem(Cart cart, long productid, int quantity){
     cart.addProduct(cart.getContent().size()+1, getProduct(productid), quantity);
 
+    carts.put(cart.getCartid(), cart);
     return cart;
   }
 

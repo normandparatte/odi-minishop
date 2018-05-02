@@ -87,6 +87,10 @@ public class Cart {
     this.content = content;
   }
 
+  /**
+   * Méthode permettant de calculer le total d'un panier
+   * @return Total du panier
+   */
   public BigDecimal getTotal() {
     BigDecimal total = new BigDecimal(0);
     for (int i = 0; i < content.size(); ++i) {
