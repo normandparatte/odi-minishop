@@ -56,8 +56,11 @@ public class Cart {
   public BigDecimal getTotal() {
     BigDecimal total = new BigDecimal(0);
     for (int i = 0; i < content.size(); ++i) {
-      total.add(BigDecimal
-          .valueOf(content.get(i).getQuantity() * content.get(i).getProduct().getPrice()));
+      total = total.add(
+          new BigDecimal(content.get(i).getQuantity()).multiply(
+              new BigDecimal(content.get(i).getProduct().getPrice())
+          )
+      );
     }
     return total;
   }

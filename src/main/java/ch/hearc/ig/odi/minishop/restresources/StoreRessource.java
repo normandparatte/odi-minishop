@@ -15,14 +15,14 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @RequestScoped
-@Path("/")
+@Path("/customer/{id}/cart")
 public class StoreRessource {
 
   @Inject
   private MockPersistence persistenceService;
 
   @POST
-  @Path("/customer/{id}/cart")
+  @Path("/")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
   public Cart createCart(
       @PathParam("id") long customerid,
@@ -35,7 +35,7 @@ public class StoreRessource {
   }
 
   @GET
-  @Path("/customer/{id}/cart/{cartId}")
+  @Path("/{cartId}")
   @Produces(MediaType.APPLICATION_JSON)
   public Cart getCart(
       @PathParam("id") long id,
@@ -45,12 +45,12 @@ public class StoreRessource {
   }
 
   @GET
-  @Path("/customer/{id}/cart/{cartId}/total")
+  @Path("/{cartId}/total")
   @Produces(MediaType.APPLICATION_JSON)
   public BigDecimal getCartTotal(
       @PathParam("id") long id,
       @PathParam("cartId") long cartId
   ) {
-    return persistenceService.getCart((int) cartId).getTotal();
+    return persistenceService.getCart(cartId).getTotal();
   }
 }
