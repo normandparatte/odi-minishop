@@ -10,9 +10,7 @@ package ch.hearc.ig.odi.minishop.restresources;
 
 import ch.hearc.ig.odi.minishop.business.Customer;
 import ch.hearc.ig.odi.minishop.services.MockPersistence;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -33,24 +31,11 @@ public class CustomerResource {
   @Inject
   private MockPersistence persistenceService;
 
-  // FIXME: cette méthode permet de tester le bon fonctionnement du marshalling JSON. Effacez-la une fois votre code en place.
-  @GET
-  @Path("/json")
-  @Produces(MediaType.APPLICATION_JSON)
-  public Map getJson() {
-    Map<String, String> theMap = new HashMap<>();
-    theMap.put("foo", "bar");
-    return theMap;
-  }
-
-  // FIXME: cette méthode permet de tester le bon fonctionnement du marshalling JSON. Effacez-la une fois votre code en place.
-  @POST
-  @Path("/json")
-  @Produces(MediaType.APPLICATION_JSON)
-  public Map postJson(HashMap theMap) {
-    return theMap;
-  }
-
+  /**
+   * Méthode GET permettant de récupérer tous les clients
+   *
+   * @return Liste de tous les clients
+   */
   @GET
   @Path("/")
   @Produces(MediaType.APPLICATION_JSON)
@@ -58,13 +43,32 @@ public class CustomerResource {
     return persistenceService.getAllCustomers();
   }
 
+  /**
+   * Méthode GET permettant de récupérer un client donné
+   *
+   * @param customerid Numéro identifiant
+   * @return Client demandé
+   */
   @GET
   @Path("/{customerid}")
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-  public Customer getCustomer(@PathParam("customerid") Long customerid) {
+  public Customer getCustomer(
+      @PathParam("customerid") Long customerid
+  ) {
     return persistenceService.getCustomer(customerid);
   }
 
+  /**
+   * Méthode POST permettant de récupérer un client donné
+   *
+   * @param id Numéro identifiant
+   * @param firstName Prénom
+   * @param lastName Nom de famille
+   * @param username Nom d'utilisateur
+   * @param email Email
+   * @param phone Téléphone
+   * @return Client demandé
+   */
   @POST
   @Path("/")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -81,19 +85,31 @@ public class CustomerResource {
     return customer;
   }
 
+  /**
+   * Méthode PUT permettant de modifier un client
+   *
+   * @param cust Client avec modifications
+   * @return Client modifié
+   */
   @PUT
   @Path("/{customerid}")
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces({MediaType.APPLICATION_JSON})
-  public Customer updateCustomer(Customer cust){
+  public Customer updateCustomer(Customer cust) {
     Customer customer = persistenceService
         .updateCustomer(cust);
     return customer;
   }
 
+  /**
+   * Méthode DELETE permettant de supprimer un client
+   *
+   * @param personid Numéro identifiant
+   */
   @DELETE
   @Path("/{customerid}")
-  public void deleteCustomer(@PathParam("customerid") Long personid) {
+  public void deleteCustomer(
+      @PathParam("customerid") Long personid) {
     persistenceService.deleteCustomer(personid);
   }
 }

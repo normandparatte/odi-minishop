@@ -8,7 +8,6 @@
 
 package ch.hearc.ig.odi.minishop.business;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +24,15 @@ public class Order {
   // -----------------------------------------------------------------------------------------------
   // ----- CONSTRUCTEURS ---------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
+
+  /**
+   * Constructeur complet d'une commande
+   *
+   * @param orderid Numéro de la commande
+   * @param orderdate Date de la commande
+   * @param orderstatus Status de la commande
+   * @param content Lignes de la commandes
+   */
   public Order(long orderid, Date orderdate, String orderstatus,
       List<OrderLine> content) {
     this.orderid = orderid;

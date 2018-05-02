@@ -8,7 +8,6 @@
 
 package ch.hearc.ig.odi.minishop.restresources;
 
-import ch.hearc.ig.odi.minishop.business.Customer;
 import ch.hearc.ig.odi.minishop.business.Order;
 import ch.hearc.ig.odi.minishop.services.MockPersistence;
 import java.util.List;
@@ -31,6 +30,11 @@ public class OrderRessource {
   @Inject
   private MockPersistence persistenceService;
 
+  /**
+   * Méthode GET permettant de récupérer toutes les commandes
+   *
+   * @return Liste des commandes demandées
+   */
   @GET
   @Path("/")
   @Produces(MediaType.APPLICATION_JSON)
@@ -38,32 +42,53 @@ public class OrderRessource {
     return persistenceService.getAllOrders();
   }
 
+  /**
+   * Méthode GET permettant de récupérer une commande donnée
+   *
+   * @param orderid Numéro identifiant
+   * @return Commande demandée
+   */
   @GET
   @Path("/{orderid}")
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-  public Order getOrder(@PathParam("orderid") long orderid) {
+  public Order getOrder(
+      @PathParam("orderid") long orderid
+  ) {
     return persistenceService.getOrder(orderid);
   }
 
+  /**
+   * Méthode PUT permettant de modifier le statut d'une commande
+   *
+   * @param orderid Numéro identifiant
+   * @param newstatus Nouveau statut
+   * @return Commande modifiée
+   */
   @PUT
   @Path("/{orderid}")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
   public Order updateOrder(@PathParam("orderid") long orderid,
-      @FormParam("newstatus") String newstatus) {
-    Order o = persistenceService
-        .updateOrder(orderid, newstatus);
+      @FormParam("newstatus") String newstatus
+  ) {
+    Order o = persistenceService.updateOrder(orderid, newstatus);
     return o;
   }
 
+  /**
+   * Méthode POST permettant d'ajouter de transformer un panier en commande
+   *
+   * @param cartid Numéro identifiant
+   * @return Commande créée
+   */
   @POST
   @Path("/")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
   public Order submitOrder(
-      @FormParam("cartid") long cartid) {
-    Order order = persistenceService
-        .submitOrder(cartid);
+      @FormParam("cartid") long cartid
+  ) {
+    Order order = persistenceService.submitOrder(cartid);
     return order;
   }
 }
