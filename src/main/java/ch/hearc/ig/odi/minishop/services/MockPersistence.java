@@ -185,15 +185,17 @@ public class MockPersistence {
     return product;
   }
 
-  public Product updateProduct(long productid, double price, String productname, String description,
-      String category, String status) {
-    Product product = products.get(productid);
-    product.setProductid(productid);
-    product.setPrice(price);
-    product.setProductname(productname);
-    product.setDescription(description);
-    product.setCategory(category);
-    product.setStatus(status);
+  public Product updateProduct(Product pr) {
+    Product product = getProduct(pr.getProductid());
+
+    product.setPrice(pr.getPrice());
+    product.setProductname(pr.getProductname());
+    product.setDescription(pr.getDescription());
+    product.setCategory(pr.getCategory());
+    product.setStatus(pr.getStatus());
+
+    products.put(product.getProductid(), product);
+
     return product;
   }
 
@@ -239,7 +241,6 @@ public class MockPersistence {
   // ----- PANIER ----------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
   public Cart getCart(int cartId) {
-    //ArrayList<Cart> carts = new ArrayList(this.carts.values());
     return carts.get(cartId);
   }
 }
