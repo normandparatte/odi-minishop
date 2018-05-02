@@ -143,6 +143,6 @@ public class StoreRessource {
       @PathParam("cartId") long cartId,
       @PathParam("itemId") long itemId
   ) {
-    persistenceService.getCart(cartId).deleteProduct(itemId);
+    persistenceService.deleteCartItem(cartId, itemId);
   }
 }
