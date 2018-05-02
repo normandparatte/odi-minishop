@@ -150,14 +150,17 @@ public class MockPersistence {
     return customer;
   }
 
-  public Customer updateCustomer(long id, String firstName, String lastName, String username,
-      String email, String phone) {
-    Customer customer = customers.get(id);
-    customer.setFirstname(firstName);
-    customer.setFirstname(lastName);
-    customer.setFirstname(username);
-    customer.setFirstname(email);
-    customer.setFirstname(phone);
+  public Customer updateCustomer(Customer cust) {
+    Customer customer = getCustomer(cust.getCustomerid());
+
+    customer.setFirstname(cust.getFirstname());
+    customer.setLastname(cust.getLastname());
+    customer.setUsername(cust.getUsername());
+    customer.setEmail(cust.getEmail());
+    customer.setPhone(cust.getPhone());
+
+    customers.put(customer.getCustomerid(), customer);
+
     return customer;
   }
 

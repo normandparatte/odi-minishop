@@ -75,17 +75,11 @@ public class CustomerResource {
 
   @PUT
   @Path("/{customerid}")
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-  public Customer updateCustomer(
-      @FormParam("id") long id,
-      @FormParam("firstName") String firstName,
-      @FormParam("lastName") String lastName,
-      @FormParam("username") String username,
-      @FormParam("email") String email,
-      @FormParam("phone") String phone) {
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces({MediaType.APPLICATION_JSON})
+  public Customer updateCustomer(Customer cust){
     Customer customer = persistenceService
-        .updateCustomer(id, firstName, lastName, username, email, phone);
+        .updateCustomer(cust);
     return customer;
   }
 
