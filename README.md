@@ -17,7 +17,7 @@ Le jeu de requêtes Postman est disponible à l'emplacement suivant :
 - ./postman/odi-minishop.postman_collection.json
 ### Artefact déployable
 Un artefact déployable est disponible à l'emplacement suivant :
-- ./finalwar/minishop:war
+- ./finalwar/minishop.war
 
 ## Outils utilisés
 
