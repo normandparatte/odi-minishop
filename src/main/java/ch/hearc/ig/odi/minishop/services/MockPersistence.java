@@ -229,6 +229,9 @@ public class MockPersistence {
   public Order updateOrder(long id, String status) {
     Order o = orders.get(id);
     o.setOrderstatus(status);
+
+    orders.put(o.getOrderid(), o);
+
     return o;
   }
 
