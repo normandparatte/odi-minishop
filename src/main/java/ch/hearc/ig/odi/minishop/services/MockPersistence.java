@@ -36,8 +36,8 @@ public class MockPersistence {
   private long idCounter = 3000;
   private long idCounterOrder = 101;
   private long idCounterOrderLine;
-  private long idCounterCustomer=101;
-  private long idCounterProduct=101;
+  private long idCounterCustomer = 101;
+  private long idCounterProduct = 101;
   Date ajd = new Date();
 
   /**
@@ -56,9 +56,12 @@ public class MockPersistence {
    * Méthode permettant de charger les listes avec des données
    */
   private void generateMockData() {
-    Customer c1 = new Customer(idCounterCustomer++, "Normand", "Paratte", "nopa", "nopa@mail.com", "078 888 88 88");
-    Customer c2 = new Customer(idCounterCustomer++, "Francis", "Heche", "frhe", "frhe@mail.com", "079 999 99 99");
-    Customer c3 = new Customer(idCounterCustomer++, "Laure", "Dinateur", "ladi", "ladi@mail.com", "077 777 77 77");
+    Customer c1 = new Customer(idCounterCustomer++, "Normand", "Paratte", "nopa", "nopa@mail.com",
+        "078 888 88 88");
+    Customer c2 = new Customer(idCounterCustomer++, "Francis", "Heche", "frhe", "frhe@mail.com",
+        "079 999 99 99");
+    Customer c3 = new Customer(idCounterCustomer++, "Laure", "Dinateur", "ladi", "ladi@mail.com",
+        "077 777 77 77");
 
     customers.put(c1.getCustomerid(), c1);
     customers.put(c2.getCustomerid(), c2);
@@ -250,7 +253,8 @@ public class MockPersistence {
   public Product createProduct(long productid, double price, String productname, String description,
       String category, String status) {
     Long id = idCounter++;
-    Product product = new Product(idCounterProduct++, price, productname, description, category, status);
+    Product product = new Product(idCounterProduct++, price, productname, description, category,
+        status);
     products.put(product.getProductid(), product);
     return product;
   }

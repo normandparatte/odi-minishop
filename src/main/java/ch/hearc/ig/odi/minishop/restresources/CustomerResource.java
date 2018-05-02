@@ -61,7 +61,6 @@ public class CustomerResource {
   /**
    * Méthode POST permettant de récupérer un client donné
    *
-   * @param id Numéro identifiant
    * @param firstName Prénom
    * @param lastName Nom de famille
    * @param username Nom d'utilisateur
