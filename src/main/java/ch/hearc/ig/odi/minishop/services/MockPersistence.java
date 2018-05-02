@@ -38,6 +38,9 @@ public class MockPersistence {
   private long idCounterOrderLine;
   Date ajd = new Date();
 
+  /**
+   * Méthode d'initialisation permettant de générer des listes avec des données
+   */
   @PostConstruct
   public void init() {
     customers = new HashMap<>();
@@ -47,6 +50,9 @@ public class MockPersistence {
     generateMockData();
   }
 
+  /**
+   * Méthode permettant de charger les listes avec des données
+   */
   private void generateMockData() {
     Customer c1 = new Customer(101, "Normand", "Paratte", "nopa", "nopa@mail.com", "078 888 88 88");
     Customer c2 = new Customer(102, "Francis", "Heche", "frhe", "frhe@mail.com", "079 999 99 99");
@@ -139,15 +145,32 @@ public class MockPersistence {
   // -----------------------------------------------------------------------------------------------
   // ----- CLIENTS ---------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
+
+  /**
+   * Méthode permettant de récupérer tous les clients
+   *
+   * @return liste de tous les clients
+   */
   public ArrayList<Customer> getAllCustomers() {
     ArrayList<Customer> customers = new ArrayList<>(this.customers.values());
     return customers;
   }
 
+  /**
+   * Méthode permettant de récupérer un client donné
+   *
+   * @param id Numéro du client
+   * @return Client
+   */
   public Customer getCustomer(long id) {
     return customers.get(id);
   }
 
+  /**
+   * Méthode permettant de créer un client
+   *
+   * @return Client créé
+   */
   public Customer createCustomer(long customerid, String firstname, String lastname,
       String username,
       String email, String phone) {
@@ -158,6 +181,12 @@ public class MockPersistence {
     return customer;
   }
 
+  /**
+   * Méthode permettant de modifier un client
+   *
+   * @param cust Client avec modifications
+   * @return Client modifié
+   */
   public Customer updateCustomer(Customer cust) {
     Customer customer = getCustomer(cust.getCustomerid());
 
@@ -172,6 +201,11 @@ public class MockPersistence {
     return customer;
   }
 
+  /**
+   * Méthode permettant de supprimer un client
+   *
+   * @param id Numéro du client
+   */
   public void deleteCustomer(long id) {
     customers.remove(id);
   }
@@ -179,15 +213,38 @@ public class MockPersistence {
   // -----------------------------------------------------------------------------------------------
   // ----- PRODUITS --------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
+
+  /**
+   * Méthode permettant de récupérer tous les produits
+   *
+   * @return Liste des produits
+   */
   public ArrayList<Customer> getAllProducts() {
     ArrayList<Customer> products = new ArrayList(this.products.values());
     return products;
   }
 
+  /**
+   * Méthode permettant de récupérer un produit donné
+   *
+   * @param id Numéro du produit
+   * @return Produit
+   */
   public Product getProduct(long id) {
     return products.get(id);
   }
 
+  /**
+   * Méthode permettant de créer un produit
+   *
+   * @param productid Numéro d'identification
+   * @param price Prix
+   * @param productname Nom
+   * @param description Description
+   * @param category Catégorie
+   * @param status Statut
+   * @return Produit créé
+   */
   public Product createProduct(long productid, double price, String productname, String description,
       String category, String status) {
     Long id = idCounter++;
@@ -196,6 +253,12 @@ public class MockPersistence {
     return product;
   }
 
+  /**
+   * Méthode permettant de modifier un produit
+   *
+   * @param pr Produit avec modifications
+   * @return Produit modifié
+   */
   public Product updateProduct(Product pr) {
     Product product = getProduct(pr.getProductid());
 
@@ -210,6 +273,11 @@ public class MockPersistence {
     return product;
   }
 
+  /**
+   * Méthode permettant de supprimer un produit
+   *
+   * @param id Numéro d'identification
+   */
   public void deleteProduct(Long id) {
     products.remove(id);
   }
@@ -217,21 +285,45 @@ public class MockPersistence {
   // -----------------------------------------------------------------------------------------------
   // ----- COMMANDES -------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
+
+  /**
+   * Méthode permettant de récupérer toutes les commandes
+   *
+   * @return Liste des commandes
+   */
   public ArrayList<Order> getAllOrders() {
     ArrayList<Order> orders = new ArrayList(this.orders.values());
     return orders;
   }
 
+  /**
+   * Méthode permettant de récupérer une commande
+   *
+   * @param id Numéro d'identification
+   * @return Commande
+   */
   public Order getOrder(long id) {
     return orders.get(id);
   }
 
+  /**
+   * Méthode permettant de mettre à jour une commande
+   * @param id Numéro de commande
+   * @param status Statut de la commande
+   * @return Commande modifiée
+   */
   public Order updateOrder(long id, String status) {
     Order o = orders.get(id);
     o.setOrderstatus(status);
     return o;
   }
 
+  /**
+   * Méthode permettant d'ajouter de transformer un panier en commande
+   *
+   * @param cartId Numéro identifiant
+   * @return Commande créée
+   */
   public Order submitOrder(long cartId) {
     Cart c = carts.get(cartId);
     List<OrderLine> orderLines = new ArrayList<>();
@@ -251,10 +343,24 @@ public class MockPersistence {
   // -----------------------------------------------------------------------------------------------
   // ----- PANIER ----------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
+
+  /**
+   * Méthode permettant de récupérer un panier
+   *
+   * @param cartId Numéro identifiant
+   * @return Panier
+   */
   public Cart getCart(long cartId) {
     return carts.get(cartId);
   }
 
+  /**
+   * Méthode permettant de récupérer une ligne produit d'un panier
+   *
+   * @param cart Panier
+   * @param productId Numéro de la ligne produit
+   * @return Ligne produit du panier
+   */
   public CartItem getCartItem(Cart cart, long productId){
     for(int i = 0; i<cart.getContent().size();i++) {
       if (productId==cart.getContent().get(i).getProduct().getProductid()) {
@@ -264,6 +370,14 @@ public class MockPersistence {
     return null;
   }
 
+  /**
+   * Méthode permettant de mettre à jour un panier
+   *
+   * @param cartId Numéro du panier
+   * @param productId Numéro du produit
+   * @param quantity Quantité
+   * @return Panier avec modifications
+   */
   public Cart updateCart(long cartId, long productId, int quantity) {
     Cart cart = getCart(cartId);
     CartItem ci = getCartItem(cart, productId);

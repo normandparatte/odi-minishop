@@ -30,16 +30,34 @@ public class Cart {
   // -----------------------------------------------------------------------------------------------
   // ----- FONCTIONS METIERS -----------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
+
+  /**
+   * Permet d'ajouter un produit à un panier
+   *
+   * @param product Produit à ajouter
+   * @param quantity Quantité du produit
+   */
   public void addProduct(Product product, int quantity) {
     content.add(new CartItem(product, quantity));
   }
 
+  /**
+   * Permet de supprimer un produit d'un panier
+   *
+   * @param itemIndex Numéro du produit à supprimer
+   */
   public void deleteProduct(long itemIndex) {
     content.remove(itemIndex);
   }
 
-  public void updateProduct(CartItem ci, int q){
-    content.get(content.indexOf(ci)).setQuantity(q);
+  /**
+   * Permet de modifier le produit d'un panier
+   *
+   * @param cartid Numéro d'identification
+   * @param quantity Quantité
+   */
+  public void updateProduct(CartItem cartid, int quantity) {
+    content.get(content.indexOf(cartid)).setQuantity(quantity);
   }
 
   // -----------------------------------------------------------------------------------------------

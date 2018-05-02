@@ -31,6 +31,13 @@ public class StoreRessource {
   @Inject
   private MockPersistence persistenceService;
 
+  /**
+   * Méthode POST permettant de créer un panier et d'y ajouter un article
+   *
+   * @param customerid Numéro du client
+   * @param productid Numéro du produit
+   * @return Panier créé
+   */
   @POST
   @Path("/")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -44,6 +51,15 @@ public class StoreRessource {
     return newCart;
   }
 
+  /**
+   * Méthode POST permettant de créer un panier et d'y ajouter un article
+   *
+   * @param customerid Numéro du client
+   * @param cartid Numéro du panier
+   * @param productid Numéro du produit
+   * @param quantity Quantité
+   * @return Panier avec article ajouté
+   */
   @POST
   @Path("/{cartid}")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -58,6 +74,13 @@ public class StoreRessource {
     return cart;
   }
 
+  /**
+   * Méthode GET permettant de récupérer un panier
+   *
+   * @param id Numéro du client
+   * @param cartId Numéro du panier
+   * @return Panier recherché
+   */
   @GET
   @Path("/{cartId}")
   @Produces(MediaType.APPLICATION_JSON)
@@ -68,6 +91,12 @@ public class StoreRessource {
     return persistenceService.getCart(cartId);
   }
 
+  /**
+   * Méthode GET permettant de récupérer le total d'un panier
+   *
+   * @param id Numéro du panier
+   * @return Total du panier
+   */
   @GET
   @Path("/{cartId}/total")
   @Produces(MediaType.APPLICATION_JSON)
@@ -78,6 +107,15 @@ public class StoreRessource {
     return persistenceService.getCart(cartId).getTotal();
   }
 
+  /**
+   * Méthode PUT permettant de modifier un panier
+   *
+   * @param customerId Numéro du client
+   * @param cartId Numéro du panier
+   * @param productId Numéro du produit
+   * @param quantity Quantité
+   * @return Panier modifié
+   */
   @PUT
   @Path("/{cartId}")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -92,6 +130,12 @@ public class StoreRessource {
     return c;
   }
 
+  /**
+   * Méthode DELETE permettant de supprimer un panier
+   *
+   * @param cartId Numéro du panier
+   * @param itemId Numéro de la ligne de produit
+   */
   @DELETE
   @Path("/{cartId}/item/{itemId}")
   public void deleteProduct(

@@ -20,12 +20,26 @@ public class CartItem {
   // -----------------------------------------------------------------------------------------------
   // ----- CONSTRUCTEURS ---------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
+
+  /**
+   * Constructeur complet d'un article du panier
+   *
+   * @param cartitemid Numéro d'identification
+   * @param product Produit
+   * @param quantity Quantité
+   */
   public CartItem(long cartitemid, Product product, long quantity) {
     this.cartitemid = cartitemid;
     this.product = product;
     this.quantity = quantity;
   }
 
+  /**
+   * Constructeur d'un article du panier
+   *
+   * @param product Produit
+   * @param quantity Quantité
+   */
   public CartItem(Product product, long quantity) {
     this.product = product;
     this.quantity = quantity;
