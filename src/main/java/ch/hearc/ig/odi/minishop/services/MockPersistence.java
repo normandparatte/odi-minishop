@@ -204,6 +204,12 @@ public class MockPersistence {
   public Order getOrder(long id) {
     return orders.get(id);
   }
+  
+  public Order updateOrder(long id, String status){
+    Order o = orders.get(id);
+    o.setOrderstatus(status);
+    return o;
+  }
 
   // -----------------------------------------------------------------------------------------------
   // ----- PANIER ----------------------------------------------------------------------------------
