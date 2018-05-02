@@ -86,6 +86,7 @@ public class CustomerResource {
       @FormParam("email") String email,
       @FormParam("phone") String phone) throws CustomerExceptions {
     Customer customer;
+
     try {
       customer = persistenceService.createCustomer(firstName, lastName, username, email, phone);
     } catch (Exception e) {
