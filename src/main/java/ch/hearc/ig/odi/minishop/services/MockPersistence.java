@@ -26,6 +26,9 @@ public class MockPersistence {
   private Map<Long, Order> orders;
   private Map<Long, Cart> carts;
   private long idCounter = 3000;
+  private long idCounterOrder = 101;
+  private long idCounterOrderLine;
+  Date ajd = new Date();
 
   @PostConstruct
   public void init() {
@@ -59,27 +62,32 @@ public class MockPersistence {
     products.put(p3.getProductid(), p3);
     products.put(p4.getProductid(), p4);
 
-    OrderLine ol1 = new OrderLine(101, p1,2);
-    OrderLine ol2 = new OrderLine(102, p3, 12);
-    OrderLine ol3 = new OrderLine(103, p2, 1);
-    OrderLine ol4 = new OrderLine(104, p4, 6);
-    OrderLine ol5 = new OrderLine(105, p1, 9);
-    OrderLine ol6 = new OrderLine(106, p3, 3);
-    OrderLine ol7 = new OrderLine(107, p3, 6);
-    OrderLine ol8 = new OrderLine(108, p1, 11);
+    idCounterOrderLine = 1;
+    OrderLine ol1 = new OrderLine(idCounterOrderLine++, p1, 2);
+    OrderLine ol2 = new OrderLine(idCounterOrderLine++, p3, 12);
+
+    idCounterOrderLine = 1;
+    OrderLine ol3 = new OrderLine(idCounterOrderLine++, p2, 1);
+    OrderLine ol4 = new OrderLine(idCounterOrderLine++, p4, 6);
+
+    idCounterOrderLine = 1;
+    OrderLine ol5 = new OrderLine(idCounterOrderLine++, p1, 9);
+    OrderLine ol6 = new OrderLine(idCounterOrderLine++, p3, 3);
+    OrderLine ol7 = new OrderLine(idCounterOrderLine++, p3, 6);
+    OrderLine ol8 = new OrderLine(idCounterOrderLine++, p1, 11);
 
     List<OrderLine> orderLines1 = new ArrayList<>();
 
     orderLines1.add(ol1);
     orderLines1.add(ol2);
 
-    Order o1 = new Order(101, new Date(2017/24/02), "paid", orderLines1);
+    Order o1 = new Order(idCounterOrder++, ajd, "paid", orderLines1);
 
     List<OrderLine> orderLines2 = new ArrayList<>();
     orderLines2.add(ol3);
     orderLines2.add(ol4);
 
-    Order o2 = new Order(102, new Date(2018/01/21), "open", orderLines2);
+    Order o2 = new Order(idCounterOrder++, ajd, "open", orderLines2);
 
     List<OrderLine> orderLines3 = new ArrayList<>();
     orderLines3.add(ol5);
@@ -87,11 +95,11 @@ public class MockPersistence {
     orderLines3.add(ol7);
     orderLines3.add(ol8);
 
-    Order o3 = new Order(103, new Date(2018/01/27), "open", orderLines3);
+    Order o3 = new Order(idCounterOrder++, ajd, "open", orderLines3);
 
-    orders.put(o1.getOrderid(),o1);
-    orders.put(o2.getOrderid(),o2);
-    orders.put(o3.getOrderid(),o3);
+    orders.put(o1.getOrderid(), o1);
+    orders.put(o2.getOrderid(), o2);
+    orders.put(o3.getOrderid(), o3);
 
     CartItem ci1 = new CartItem(p1, 2);
     CartItem ci2 = new CartItem(p3, 1);
@@ -204,10 +212,26 @@ public class MockPersistence {
   public Order getOrder(long id) {
     return orders.get(id);
   }
-  
-  public Order updateOrder(long id, String status){
+
+  public Order updateOrder(long id, String status) {
     Order o = orders.get(id);
     o.setOrderstatus(status);
+    return o;
+  }
+
+  public Order submitOrder(long cartId) {
+    Cart c = carts.get(cartId);
+    List<OrderLine> orderLines = new ArrayList<>();
+    idCounterOrderLine = 1;
+
+    for (CartItem ci : c.getContent()) {
+      OrderLine ol = new OrderLine(idCounterOrderLine++, ci.getProduct(), ci.getQuantity());
+      orderLines.add(ol);
+    }
+
+    Order o = new Order(idCounterOrder++, ajd, "open", orderLines);
+    orders.put(o.getOrderid(), o);
+
     return o;
   }
 
@@ -215,7 +239,7 @@ public class MockPersistence {
   // ----- PANIER ----------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
   public Cart getCart(int cartId) {
-    ArrayList<Cart> carts = new ArrayList(this.carts.values());
+    //ArrayList<Cart> carts = new ArrayList(this.carts.values());
     return carts.get(cartId);
   }
 }
