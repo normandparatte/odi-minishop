@@ -56,17 +56,11 @@ public class ProductResource {
 
   @PUT
   @Path("/{productid}")
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  @Consumes(MediaType.APPLICATION_JSON)
   @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-  public Product updateProduct(
-      @FormParam("productid") long productid,
-      @FormParam("price") double price,
-      @FormParam("productname") String productname,
-      @FormParam("description") String description,
-      @FormParam("category") String category,
-      @FormParam("status") String status) {
+  public Product updateProduct(Product pr) {
     Product product = persistenceService
-        .updateProduct(productid, price, productname, description, category, status);
+        .updateProduct(pr);
     return product;
   }
 
