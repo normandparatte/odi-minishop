@@ -52,7 +52,7 @@ public class CustomerResource {
    */
   @GET
   @Path("/{customerid}")
-  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @Produces(MediaType.APPLICATION_JSON)
   public Customer getCustomer(
       @PathParam("customerid") Long customerid
   ) throws CustomerExceptions {
@@ -78,7 +78,7 @@ public class CustomerResource {
   @POST
   @Path("/")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @Produces(MediaType.APPLICATION_JSON)
   public Customer createCustomer(
       @FormParam("firstName") String firstName,
       @FormParam("lastName") String lastName,
@@ -104,7 +104,7 @@ public class CustomerResource {
   @PUT
   @Path("/{customerid}")
   @Consumes(MediaType.APPLICATION_JSON)
-  @Produces({MediaType.APPLICATION_JSON})
+  @Produces(MediaType.APPLICATION_JSON)
   public Customer updateCustomer(Customer cust) throws CustomerExceptions {
     Customer customer = null;
     try {
@@ -122,6 +122,8 @@ public class CustomerResource {
    */
   @DELETE
   @Path("/{customerid}")
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.APPLICATION_JSON)
   public void deleteCustomer(
       @PathParam("customerid") Long personid) throws CustomerExceptions {
     try {

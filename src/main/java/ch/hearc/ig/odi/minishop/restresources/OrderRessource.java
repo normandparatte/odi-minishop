@@ -51,7 +51,7 @@ public class OrderRessource {
    */
   @GET
   @Path("/{orderid}")
-  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @Produces(MediaType.APPLICATION_JSON)
   public Order getOrder(
       @PathParam("orderid") long orderid
   ) throws OrderExceptions {
@@ -75,7 +75,7 @@ public class OrderRessource {
   @PUT
   @Path("/{orderid}")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @Produces(MediaType.APPLICATION_JSON)
   public Order updateOrder(@PathParam("orderid") long orderid,
       @FormParam("newstatus") String newstatus
   ) throws OrderExceptions {
@@ -99,7 +99,7 @@ public class OrderRessource {
   @POST
   @Path("/")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @Produces(MediaType.APPLICATION_JSON)
   public Order submitOrder(
       @FormParam("cartid") long cartid
   ) throws OrderExceptions {

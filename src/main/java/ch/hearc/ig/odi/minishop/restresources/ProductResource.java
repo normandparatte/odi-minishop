@@ -53,7 +53,7 @@ public class ProductResource {
    */
   @GET
   @Path("/{productid}")
-  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @Produces(MediaType.APPLICATION_JSON)
   public Product getProduct(
       @PathParam("productid") Long productid
   ) throws ProductExceptions {
@@ -77,7 +77,7 @@ public class ProductResource {
   @POST
   @Path("/")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @Produces(MediaType.APPLICATION_JSON)
   public Product createProduct(
       @FormParam("price") double price,
       @FormParam("productname") String productname,
@@ -103,7 +103,7 @@ public class ProductResource {
   @PUT
   @Path("/{productid}")
   @Consumes(MediaType.APPLICATION_JSON)
-  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @Produces(MediaType.APPLICATION_JSON)
   public Product updateProduct(Product pr) throws ProductExceptions {
     Product product;
     try{
@@ -121,6 +121,8 @@ public class ProductResource {
    * @param productid Numéro du produit
    */
   @DELETE
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.APPLICATION_JSON)
   @Path("/{productid}")
   public void deleteProduct(
       @PathParam("productid") long productid

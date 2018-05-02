@@ -42,6 +42,7 @@ public class StoreRessource {
   @POST
   @Path("/")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  @Produces(MediaType.APPLICATION_JSON)
   public Cart createCart(
       @PathParam("id") long customerid,
       @FormParam("productid") long productid,
@@ -68,6 +69,7 @@ public class StoreRessource {
   @POST
   @Path("/{cartid}")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  @Produces(MediaType.APPLICATION_JSON)
   public Cart addToCart(
       @PathParam("id") long customerid,
       @PathParam("cartid") long cartid,
@@ -138,7 +140,7 @@ public class StoreRessource {
   @PUT
   @Path("/{cartId}")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  @Produces(MediaType.APPLICATION_JSON)
   public Cart updateCart(
       @PathParam("id") long customerId,
       @PathParam("cartId") long cartId,
@@ -164,6 +166,8 @@ public class StoreRessource {
    */
   @DELETE
   @Path("/{cartId}/item/{itemId}")
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.APPLICATION_JSON)
   public void deleteProduct(
       @PathParam("cartId") long cartId,
       @PathParam("itemId") long itemId
