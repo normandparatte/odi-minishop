@@ -1,5 +1,6 @@
 package ch.hearc.ig.odi.minishop.business;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,5 +51,14 @@ public class Cart {
 
   public void setContent(List<CartItem> content) {
     this.content = content;
+  }
+
+  public BigDecimal getTotal() {
+    BigDecimal total = new BigDecimal(0);
+    for (int i = 0; i < content.size(); ++i) {
+      total.add(BigDecimal
+          .valueOf(content.get(i).getQuantity() * content.get(i).getProduct().getPrice()));
+    }
+    return total;
   }
 }

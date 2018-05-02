@@ -2,6 +2,7 @@ package ch.hearc.ig.odi.minishop.restresources;
 
 import ch.hearc.ig.odi.minishop.business.Cart;
 import ch.hearc.ig.odi.minishop.services.MockPersistence;
+import java.math.BigDecimal;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -14,7 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @RequestScoped
-@Path("/store")
+@Path("/")
 public class StoreRessource {
 
   @Inject
@@ -41,5 +42,15 @@ public class StoreRessource {
       @PathParam("cartId") long cartId
   ) {
     return persistenceService.getCart((int) cartId);
+  }
+
+  @GET
+  @Path("/customer/{id}/cart/{cartId}/total")
+  @Produces(MediaType.APPLICATION_JSON)
+  public BigDecimal getCartTotal(
+      @PathParam("id") long id,
+      @PathParam("cartId") long cartId
+  ) {
+    return persistenceService.getCart((int) cartId).getTotal();
   }
 }

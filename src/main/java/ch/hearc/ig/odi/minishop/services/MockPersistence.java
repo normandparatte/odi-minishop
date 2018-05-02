@@ -209,7 +209,6 @@ public class MockPersistence {
   // ----- PANIER ----------------------------------------------------------------------------------
   // -----------------------------------------------------------------------------------------------
   public Cart getCart(int cartId) {
-    ArrayList<Cart> carts = new ArrayList(this.carts.values());
     return carts.get(cartId);
   }
 }
