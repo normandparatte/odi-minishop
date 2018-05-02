@@ -36,6 +36,8 @@ public class MockPersistence {
   private long idCounter = 3000;
   private long idCounterOrder = 101;
   private long idCounterOrderLine;
+  private long idCounterCustomer=101;
+  private long idCounterProduct=101;
   Date ajd = new Date();
 
   @PostConstruct
@@ -48,21 +50,21 @@ public class MockPersistence {
   }
 
   private void generateMockData() {
-    Customer c1 = new Customer(101, "Normand", "Paratte", "nopa", "nopa@mail.com", "078 888 88 88");
-    Customer c2 = new Customer(102, "Francis", "Heche", "frhe", "frhe@mail.com", "079 999 99 99");
-    Customer c3 = new Customer(103, "Laure", "Dinateur", "ladi", "ladi@mail.com", "077 777 77 77");
+    Customer c1 = new Customer(idCounterCustomer++, "Normand", "Paratte", "nopa", "nopa@mail.com", "078 888 88 88");
+    Customer c2 = new Customer(idCounterCustomer++, "Francis", "Heche", "frhe", "frhe@mail.com", "079 999 99 99");
+    Customer c3 = new Customer(idCounterCustomer++, "Laure", "Dinateur", "ladi", "ladi@mail.com", "077 777 77 77");
 
     customers.put(c1.getCustomerid(), c1);
     customers.put(c2.getCustomerid(), c2);
     customers.put(c3.getCustomerid(), c3);
 
-    Product p1 = new Product(101, 10.20, "Air de Neuchâtel en bouteille",
+    Product p1 = new Product(idCounterProduct++, 10.20, "Air de Neuchâtel en bouteille",
         "Air du bord de lac neuchâtelois", "air", "active");
-    Product p2 = new Product(102, 3490, "Air du Luxembourg",
+    Product p2 = new Product(idCounterProduct++, 3490, "Air du Luxembourg",
         "Air du Luxembourg en fiole diamentée ornée de rubis", "air", "active");
-    Product p3 = new Product(103, 5.10, "Eau de Neuchâtel en bouteille",
+    Product p3 = new Product(idCounterProduct++, 5.10, "Eau de Neuchâtel en bouteille",
         "Eau du lac de Neuchâtel", "eau", "active");
-    Product p4 = new Product(104, 105.70, "Eau du Japon en bouteille",
+    Product p4 = new Product(idCounterProduct++, 105.70, "Eau du Japon en bouteille",
         "Eau du Japon", "eau", "active");
 
     products.put(p1.getProductid(), p1);
@@ -148,11 +150,11 @@ public class MockPersistence {
     return customers.get(id);
   }
 
-  public Customer createCustomer(long customerid, String firstname, String lastname,
+  public Customer createCustomer(String firstname, String lastname,
       String username,
       String email, String phone) {
     Long id = idCounter++;
-    Customer customer = new Customer(customerid, firstname, lastname, username,
+    Customer customer = new Customer(idCounterCustomer++, firstname, lastname, username,
         email, phone);
     customers.put(customer.getCustomerid(), customer);
     return customer;
@@ -188,10 +190,10 @@ public class MockPersistence {
     return products.get(id);
   }
 
-  public Product createProduct(long productid, double price, String productname, String description,
+  public Product createProduct(double price, String productname, String description,
       String category, String status) {
     Long id = idCounter++;
-    Product product = new Product(productid, price, productname, description, category, status);
+    Product product = new Product(idCounterProduct++, price, productname, description, category, status);
     products.put(product.getProductid(), product);
     return product;
   }
