@@ -34,6 +34,20 @@ public class StoreRessource {
     return newCart;
   }
 
+  @POST
+  @Path("/{cartid}")
+  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  public Cart addToCart(
+      @PathParam("id") long customerid,
+      @PathParam("cartid") long cartid,
+      @FormParam("productid") long productid,
+      @FormParam("quantity") int quantity
+  ) {
+    Cart cart = persistenceService.getCart(cartid);
+    cart.ajouterProduit(persistenceService.getProduct(productid), quantity);
+    return cart;
+  }
+
   @GET
   @Path("/{cartId}")
   @Produces(MediaType.APPLICATION_JSON)
