@@ -57,7 +57,7 @@ public class StoreRessource {
       @PathParam("id") long id,
       @PathParam("cartId") long cartId
   ) {
-    return persistenceService.getCart((int) cartId);
+    return persistenceService.getCart(cartId);
   }
 
   @GET
