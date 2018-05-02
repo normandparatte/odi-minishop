@@ -10,6 +10,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -67,6 +68,20 @@ public class StoreRessource {
       @PathParam("cartId") long cartId
   ) {
     return persistenceService.getCart(cartId).getTotal();
+  }
+
+  @PUT
+  @Path("/{cartId}")
+  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+  public Cart updateCart(
+      @PathParam("id") long customerId,
+      @PathParam("cartId") long cartId,
+      @FormParam("productId") long productId,
+      @FormParam("quantity") long quantity
+  ) {
+    Cart c = persistenceService.updateCart(cartId, productId, quantity);
+    return c;
   }
 
   @DELETE

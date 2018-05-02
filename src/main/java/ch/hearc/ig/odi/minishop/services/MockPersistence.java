@@ -217,4 +217,11 @@ public class MockPersistence {
   public Cart getCart(long cartId) {
     return carts.get(cartId);
   }
+
+  public Cart updateCart(long cartId, long productId, int quantity) {
+    getCart(cartId).deleteProduct(productId);
+    getCart(cartId).addProduct(getProduct(productId), quantity);
+    carts.put(cartId, getCart(cartId));
+    return getCart(cartId);
+  }
 }
