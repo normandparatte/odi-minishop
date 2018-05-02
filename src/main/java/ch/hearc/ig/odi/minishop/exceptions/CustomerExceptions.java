@@ -13,4 +13,5 @@ public class CustomerExceptions extends Exception {
   public CustomerExceptions(String message, Throwable cause) {
     super(message, cause);
   }
+
 }
